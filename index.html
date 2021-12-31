@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8" />
+		<title>mobbler: mobbly the sound</title>
+        <link rel="shortcut icon" href="img/favicon.ico" />
+		<link rel="stylesheet" href="css/main.css" />
+		<script type="module" src="js/main.js"></script>
+	</head>
+	<body>
+		<div class="main">
+			<section id="modules">
+				<div class="selection-rect" id="selection-rect" hidden></div>
+			</section>
+            <nav class="nav">
+				<ul class="nav-list">
+					<li id="inputs" class="menu">
+						<button class="menu-button">Inputs</button>
+						<div class="submenu">
+							<ul class="submenu-list">
+								<li class="submenu-item">
+                                    <button class="submenu-button" id="audioSource">Audio Source</button>
+                                </li>
+							</ul>
+						</div>
+					</li>
+					<li id="basics" class="menu">
+						<button class="menu-button">Basics</button>
+						<div class="submenu">
+							<ul class="submenu-list">
+				
+                                <li class="submenu-item">
+                                    <button class="submenu-button" id="crossfade">Crossfade</button>
+                                </li>
+							
+                                <li class="submenu-item">
+                                    <button class="submenu-button" id="equalizer">Equalizer</button>
+                                </li>
+                
+							</ul>
+						</div>
+					</li>
+					<li id="outputs" class="menu">
+                        <button class="menu-button">Outputs</button>
+						<div class="submenu">
+							<ul class="submenu-list">
+						        <li class="submenu-item">
+                                    <button class="submenu-button" id="output">Output</button>
+                                </li>
+                            </ul>
+                        </div>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<svg id=svgCanvas xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <!-- linear gradient on svg cannot be done via css unfortunatelly -->
+			<defs>
+				<linearGradient id="grad-left-to-right" x1="0%" y1="50%" x2="100%" y2="50%">
+					<stop offset="0%" stop-color="black" />
+					<stop offset="50%" stop-color="#FFD700"/>
+					<stop offset="100%" stop-color="black" />
+					<animateTransform attributeName="gradientTransform"
+						type="translate"
+						from="-1 0"
+						to="1 0"
+						begin="0s"
+						dur="1.5s"
+						repeatCount="indefinite"/>
+				</linearGradient>
+				<linearGradient id="grad-top-to-bottom" x1="50%" y1="0%" x2="50%" y2="100%">
+					<stop offset="0%" stop-color="black" />
+					<stop offset="50%" stop-color="#FFD700"/>
+					<stop offset="100%" stop-color="black" />
+					<animateTransform attributeName="gradientTransform"
+						type="translate"
+						from="0 -1"
+						to="0 1"
+						begin="0s"
+						dur="1.5s"
+						repeatCount="indefinite"/>
+				</linearGradient>
+				<linearGradient id="grad-right-to-left" x1="100%" y1="50%" x2="0%" y2="50%">
+					<stop offset="0%" stop-color="black" />
+					<stop offset="50%" stop-color="#FFD700"/>
+					<stop offset="100%" stop-color="black" />
+					<animateTransform attributeName="gradientTransform"
+						type="translate"
+						from="1 0"
+						to="-1 0"
+						begin="0s"
+						dur="1.5s"
+						repeatCount="indefinite"/>
+				</linearGradient>
+				<linearGradient id="grad-bottom-to-top" x1="50%" y1="100%" x2="50%" y2="0%">
+					<stop offset="0%" stop-color="black" />
+					<stop offset="50%" stop-color="#FFD700"/>
+					<stop offset="100%" stop-color="black" />
+					<animateTransform attributeName="gradientTransform"
+						type="translate"
+						from="0 1"
+						to="0 -1"
+						begin="0s"
+						dur="1.5s"
+						repeatCount="indefinite"/>
+				</linearGradient>
+			</defs>
+		</svg>
+        <footer class="mixer" id="mixer"></footer>
+	</body>
+</html>
