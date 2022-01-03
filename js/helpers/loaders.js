@@ -1,28 +1,10 @@
-import { audioContext, modules, cables } from "../main.js";
-import { addOpenFileButtonTo, displayAlertOnElement } from "./builders.js";
+import { audioContext } from "../main.js";
+import { addOpenFileButtonTo } from "./builders.js";
 
-// adding sounds to the audioContext
-export function loadFilesIntoAudioContext(soundArray, isSound) {
-    let nameBufferDictonary = new Object();
-    soundArray.forEach((fileName) => {
-        let soundRequest = new XMLHttpRequest();
-        soundRequest.open("GET", `./sounds/${fileName}`, true);
-        soundRequest.responseType = "arraybuffer";
-        soundRequest.onload = function () {
-            audioContext.decodeAudioData(soundRequest.response, function (buffer) {
-                nameBufferDictonary[fileName] = buffer;
-            });
-        };
-        soundRequest.send();
-    });
-    isSound ? (audioContext.nameSoundBuffer = nameBufferDictonary) : (audioContext.nameIRBuffer = nameBufferDictonary);
-}
-
-export function openFileHandler(module, type) {
+export function openFileHandler(module) {
     const reader = new FileReader();
-    const select = module.content.options.select;
-    const fileButton = module.content.options.select.fileButton;
-    const fileLoaded = module.content.options.select.fileButton.input.files[0];
+    const fileLoaded = module.openFileInput.files[0];
+    const openFileButton = document.getElementById("file button");
 
     // when file is loaded as array buffer
     reader.onload = function () {
@@ -33,23 +15,18 @@ export function openFileHandler(module, type) {
             .then(function (decodedData) {
                 // store it as an module buffer
                 module.buffer = decodedData;
-                // load into buffer array or IR
-                if (type === "sound") audioContext.nameSoundBuffer[fileLoaded.name] = decodedData;
-                if (type === "ir") audioContext.nameIRBuffer[fileLoaded.name] = decodedData;
+                // load into buffer array
+                audioContext.nameSoundBuffer[fileLoaded.name] = decodedData;
 
-                // in reverb and convolver new file need to be played instantly
-                if (module.name === "reverb") module.audioNode.convolerNode.buffer = audioContext.nameIRBuffer[fileLoaded.name];
-                if (module.name === "convolver") module.audioNode.buffer = audioContext.nameIRBuffer[fileLoaded.name];
-
-                fileButton.innerHTML = fileLoaded.name;
-                fileButton.removeAttribute("id"); // not button anymore
+                openFileButton.innerHTML = fileLoaded.name;
+                openFileButton.removeAttribute("id"); // not button anymore
 
                 // add another "open file..." button
-                addOpenFileButtonTo(select);
+                addOpenFileButtonTo(module.select);
             })
             .catch((error) => {
-                select.value = select.options[0].text;
-                displayAlertOnElement("Unable to decode audio data", module.div);
+                module.select.value = module.select.options[0].text;
+                alert("Unable to decode audio data");
             });
     };
     reader.onerror = () => {

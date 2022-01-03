@@ -1,62 +1,82 @@
-import Player from "../classes/ModulePlayer.js";
 import { audioContext } from "../main.js";
 import { openFileHandler } from "../helpers/loaders.js";
 
-export default function audioSource(event, initalLoop, initalBufferName, initalPlaybackRate) {
-    const soundNames = Object.keys(audioContext.nameSoundBuffer);
-    const bufferName = initalBufferName === undefined ? soundNames[0] : initalBufferName;
-    const looperValue = initalLoop === undefined ? false : Boolean(initalLoop);
-    const playbackRate = parseFloat(initalPlaybackRate || 1);
-    const playbackRateInfo = "Increase the playback rate squeeze the sound wave into a smaller time window, which increases its frequency";
+export default function audioSource(leftEqInput, rightEqInput) {
+    const module = {};
+    const pinkNoise = new AudioWorkletNode(audioContext, "pinkNoise");
+    const brownNoise = new AudioWorkletNode(audioContext, "brownNoise");
+    const whiteNoise = new AudioWorkletNode(audioContext, "whiteNoise");
 
-    const module = new Player("audio source", bufferName, soundNames, true, looperValue);
+    module.select = document.getElementsByClassName("module-1-content-options-select")[0];
+    module.playButton = document.getElementById("module-1-controllers-switch");
+    module.openFileInput = document.getElementsByClassName("module-1-content-options-select-open-file-input")[0];
 
-    module.createSlider("playback Rate", playbackRate, 0.1, 5, 0.1, "x", false, playbackRateInfo);
+    module.loop = false;
+    module.audioNode = undefined;
+    module.isTransmitting = false;
 
-    // after this openFile will be accessible via module.content.options.select.fileButton
-    module.addOpenFileTo(module.content.options.select);
+    module.playSound = () => {
+        module.isTransmitting = true;
+        module.playButton.classList.add("switch-on");
 
+        // stop old audioNode (if there is any)
+        if (module.audioNode) {
+            module.audioNode.disconnect();
+        }
+
+        if (module.select.value === "white noise") {
+            module.audioNode = whiteNoise;
+        } else if (module.select.value === "pink noise") {
+            module.audioNode = pinkNoise;
+        } else if (module.select.value === "brown noise") {
+            module.audioNode = brownNoise;
+        } else {
+            //  create a new audio buffer source with selected buffer
+            const bufferName = audioContext.nameSoundBuffer[module.select.value];
+
+            module.audioNode = new AudioBufferSourceNode(audioContext, {
+                loop: true,
+                buffer: bufferName,
+            });
+
+            module.audioNode.start();
+        }
+
+        module.audioNode.connect(leftEqInput);
+        module.audioNode.connect(rightEqInput);
+    };
+    module.stopSound = () => {
+        module.isTransmitting = false;
+        module.playButton.classList.remove("switch-on");
+
+        if (module.audioNode) {
+            module.audioNode.disconnect();
+        }
+    };
     // when select changes
-    module.content.options.select.onchange = function (event) {
+    module.select.onchange = function (event) {
         // when new option is added (eg. after new file loaded) this onchange event get trigger too
         // srcElement.id is only defined when if it was triggered by file button (eg. loading file)
-        if (!event.srcElement.id) {
+        if (!event.target.id) {
             // when selected option is an file button start openFileHandler
             if (this[this.selectedIndex].id === "file button") {
                 // add hooker to the fileButton and then start it by click event
-                module.content.options.select.fileButton.input.onchange = () => {
-                    openFileHandler(module, "sound");
+                module.openFileInput.onchange = () => {
+                    openFileHandler(module);
                 };
-                module.content.options.select.fileButton.input.click();
+                module.openFileInput.click();
                 // stop the sound as select.value is still "open file..." thus causing issue in loading audio buffer
                 module.stopSound();
             } else {
                 // if something is playing stop it and play the new one
-                module.isTransmitting && module.playSound();
+                if (module.isTransmitting) module.playSound();
             }
         }
     };
 
-    // when changing looper settings kill or loop the buffer
-    module.content.options.looper.checkbox.onchange = function () {
-        if (module.audioNode) {
-            module.audioNode.loop = this.checked;
-            if (this.checked === true) {
-                window.clearTimeout(module.audioNode.stopTimer);
-            }
-            if (this.checked === false) {
-                const currentBuffer = audioContext.nameSoundBuffer[module.content.options.select.value];
-                const delay = Math.floor(currentBuffer.duration * 1000) + 1;
-
-                module.audioNode.stopTimer = window.setTimeout(() => {
-                    module.stopSound();
-                }, delay);
-            }
-        }
+    module.playButton.onclick = () => {
+        module.isTransmitting ? module.stopSound() : module.playSound();
     };
-
-    // add inital cable when structure is fully build - getBoundingClientRect related
-    module.addInitalCable();
 
     return module;
 }

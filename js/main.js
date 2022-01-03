@@ -1,15 +1,8 @@
-import output from "./effects/output.js";
-import crossfade from "./effects/crossfade.js";
 import equalizer from "./effects/equalizer.js";
 import audioSource from "./effects/audioSource.js";
-import { loadFilesIntoAudioContext } from "./helpers/loaders.js";
+import outputSwitch from "./effects/switch.js";
 
-// set all the initial variables
-export let cables = {}; // keep all cables
-export let modules = {}; // keep all modules
 export let audioContext;
-
-const sounds = ["white-noise.wav", "pink-noise.wav"];
 
 // start audio with user interaction (chrome policy)
 document.onmousemove = () => {
@@ -19,17 +12,32 @@ document.onmousemove = () => {
         alert("The Web Audio API is not supported in this browser.");
     }
 
-    loadFilesIntoAudioContext(sounds, true);
+    audioContext.nameSoundBuffer = new Object();
+
+    const cross = outputSwitch().audioNode;
+    const leftEq = equalizer("leftEQ").audioNode;
+    const rightEq = equalizer("rightEQ").audioNode;
+
+    const crossLeft = cross.leftNode;
+    const crossRight = cross.rightNode;
+    const crossOutput = cross.outputNode;
+    const leftEqInput = leftEq.inputNode;
+    const leftEqOutput = leftEq.outputNode;
+    const rightEqInput = rightEq.inputNode;
+    const rightEqOutput = rightEq.outputNode;
+
+    // don't start till all noises are loaded
+    audioContext.audioWorklet.addModule("js/effects/whiteNoise.js").then(() => {
+        audioContext.audioWorklet.addModule("js/effects/pinkNoise.js").then(() => {
+            audioContext.audioWorklet.addModule("js/effects/brownNoise.js").then(() => {
+                audioSource(leftEqInput, rightEqInput);
+            });
+        });
+    });
+
+    crossOutput.connect(audioContext.destination);
+    leftEqOutput.connect(crossLeft);
+    rightEqOutput.connect(crossRight);
 
     document.onmousemove = undefined;
-};
-
-document.getElementById("output").onmousedown = output;
-document.getElementById("crossfade").onmousedown = crossfade;
-document.getElementById("equalizer").onmousedown = equalizer;
-document.getElementById("audioSource").onmousedown = audioSource;
-
-// preventing enter key from adding space in name/parameter edition
-document.onkeydown = (event) => {
-    event.key === "Enter" && event.preventDefault();
 };

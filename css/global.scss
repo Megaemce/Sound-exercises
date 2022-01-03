@@ -1,0 +1,69 @@
+$yellow: #d1ac00;
+$red: #4f000b;
+$white: #EDF2F4;
+$gray: #8D99AE;
+$black: #2B2D42;
+$blue: #0e4758;
+
+:root {
+    user-select: none;
+
+    --sliderWidth: 90px;
+
+
+}
+
+@font-face {
+    font-family: 'ProximaNovaRgRegular';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('../fonts/proxima_nova_reg-webfont.eot');
+    src: url('../fonts/proxima_nova_reg-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/proxima_nova_reg-webfont.woff') format('woff'),
+        url('../fonts/proxima_nova_reg-webfont.ttf') format('truetype'),
+        url('../fonts/proxima_nova_reg-webfont.svg#ProximaNovaRgRegular') format('svg');
+}
+
+
+.main {
+    position: relative;
+    z-index: 1;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+    font-family: 'ProximaNovaRgRegular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #4c4c4c;
+}
+
+body {
+    margin: 0;
+
+    font-size: 1em;
+    line-height: 1.4;
+
+    background-color: $blue;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    z-index: -1;
+
+    top: 0;
+    left: 0;
+
+    filter: drop-shadow(10px 10px 1px rgba(0, 0, 0, .2));
+}
