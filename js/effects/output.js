@@ -1,22 +1,30 @@
 import { audioContext } from "../main.js";
 
-export default function outputSwitch() {
+export default function output() {
     const module = {};
 
     module.switch = document.getElementById("switch-controllers-switch");
-    module.track = "right";
+    module.track = "left";
     module.audioNode = {
         leftNode: new GainNode(audioContext),
         rightNode: new GainNode(audioContext),
         outputNode: new GainNode(audioContext),
         switchTo(track) {
             if (track === "right") {
+                module.switch.classList.remove("left");
+                module.switch.classList.add("right");
+
                 this.leftNode.disconnect();
                 this.rightNode.connect(module.audioNode.outputNode);
+
                 module.track = "right";
             } else {
+                module.switch.classList.remove("right");
+                module.switch.classList.add("left");
+
                 this.rightNode.disconnect();
                 this.leftNode.connect(module.audioNode.outputNode);
+
                 module.track = "left";
             }
         },
@@ -25,16 +33,12 @@ export default function outputSwitch() {
     module.switch.onclick = () => {
         if (module.track === "left") {
             module.audioNode.switchTo("right");
-            module.switch.classList.remove("left");
-            module.switch.classList.add("right");
         } else {
             module.audioNode.switchTo("left");
-            module.switch.classList.remove("right");
-            module.switch.classList.add("left");
         }
     };
 
-    module.audioNode.rightNode.connect(module.audioNode.outputNode);
+    module.audioNode.leftNode.connect(module.audioNode.outputNode);
 
     return module;
 }

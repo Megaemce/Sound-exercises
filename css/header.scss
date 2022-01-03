@@ -1,0 +1,49 @@
+
+$yellow: #d1ac00;
+$red: #4f000b;
+$white: #edf2f4;
+$gray: #8d99ae;
+$black: #2b2d42;
+$blue: #0e4758;
+$font-quick: 'Quicksand',
+sans-serif;
+$font-yellow: 'Yellowtail',
+cursive;
+
+.header {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    padding: 10px 20px;
+
+    position: fixed;
+    top: 0;
+
+    color: $yellow;
+
+    background-color: $red;
+
+    &__choices {
+        margin-right: 35px;
+        margin-left: 15px;
+    }
+
+    &__apply {
+        padding: 5px 20px;
+
+        color: $yellow;
+
+        border: 1px solid $yellow;
+        border-radius: 2px;
+
+        transition: .2s;
+
+
+        &:hover {
+            color: $red;
+
+            background-color: $yellow;
+        }
+    }
+}

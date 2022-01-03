@@ -1,10 +1,9 @@
 $yellow: #d1ac00;
 $red: #4f000b;
-$white: #EDF2F4;
-$gray: #8D99AE;
-$black: #2B2D42;
+$white: #edf2f4;
+$gray: #8d99ae;
+$black: #2b2d42;
 $blue: #0e4758;
-
 $font-quick: 'Quicksand',
 sans-serif;
 $font-yellow: 'Yellowtail',
@@ -16,55 +15,58 @@ cursive;
 
     position: absolute;
 
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: $white;
-
     border: 1px solid $yellow;
+    border-radius: 10px;
+    background-color: $white;
+    overflow: hidden;
 
     filter: drop-shadow(10px 10px 1px rgba(0, 0, 0, .2));
 }
 
 .module .left-and-front-side {
     display: flex;
-    position: relative;
 
+    position: relative;
+}
+
+.module.question {
     &::after {
         content: '?';
+
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+
         position: absolute;
-        top: 0;
+        z-index: 1000;
+        top: 35px;
+        right: 0;
         bottom: 0;
         left: 0;
-        right: 0;
-        z-index: 1000;
+
         font-size: 160px;
         color: $blue;
-        display: none;
+    }.content {
+        filter: blur( 5px);
 
+        .slider input[type="range"]::-webkit-slider-thumb {
+            display: none;
+        }
     }
 }
-
-.module .front-side {
-    // filter: blur(3px);
-}
-
 .module .head {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     padding: 5px 10px;
-    background-color: $red;
 
     border-bottom: 1px solid $yellow;
+    background-color: $red;
 }
 
 .module .head .title-wrapper {
     width: 100%;
-    padding: 0 5px;
 }
 
 .module .head .title-wrapper .title {
@@ -74,9 +76,9 @@ cursive;
 
     margin-top: 1px;
 
-    color: $yellow;
-    font-size: 20px;
     font-family: $font-yellow;
+    font-size: 20px;
+    color: $yellow;
 }
 
 .module .content {
@@ -88,17 +90,15 @@ cursive;
     justify-content: center;
 
     min-height: 30px;
-    padding: 15px;
+    padding: 10px;
 
     position: relative;
-
 }
 
 .module .content .options {
     display: flex;
     flex-direction: row;
     align-items: center;
-
 
     width: 100%;
     min-height: 30px;
@@ -109,8 +109,6 @@ cursive;
 
     width: 100%;
     min-width: 100px;
-
-    margin: 0 5px;
 
     font-size: .625em;
     white-space: pre;
@@ -129,24 +127,36 @@ cursive;
 
 .module .content .controllers {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    padding-top: .25em;
 }
 
 .module .content .controllers .switch {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 3px;
 
     position: relative;
+    margin-left: 3px;
 
     font-size: .625em;
     text-transform: uppercase;
+
+    &.horizontal {
+        flex-direction: row;
+        justify-content: stretch;
+    }
+
+    span {
+        margin-bottom: 7px;
+
+        font-family: $font-quick;
+        font-size: 20px;
+        color: $blue;
+    }
 }
+
 
 .module .content .controllers .switch button {
     width: 45px;
@@ -188,6 +198,7 @@ cursive;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     width: 50px;
 }
 
@@ -204,9 +215,6 @@ cursive;
 }
 
 .module .label {
-
-    margin-top: 10px;
-    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -214,16 +222,17 @@ cursive;
     width: 100%;
 
     position: relative;
+    margin-top: 10px;
 
     font-family: $font-quick;
-
+    font-size: 12px;
 }
 
 .module .label .label-span {
     width: 100%;
 
-    text-align: center;
     font-size: 10px;
+    text-align: center;
     color: $blue;
 }
 
@@ -233,10 +242,10 @@ cursive;
     justify-content: center;
 
     min-width: 59px;
+
     color: $blue;
 
-    &>.value{
-
+    & > .value {
         color: $gray;
     }
 }
@@ -285,9 +294,9 @@ cursive;
     z-index: 1;
     top: 0;
 
+    border-radius: 2px;
     background-color: $yellow;
     cursor: pointer;
-    border-radius: 2px;
 
     -webkit-appearance: none;
 }

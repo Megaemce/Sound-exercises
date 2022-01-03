@@ -9,9 +9,35 @@
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Yellowtail&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="css/global.css" />
         <link rel="stylesheet" href="css/module.css" />
+        <link rel="stylesheet" href="css/header.css" />
         <script type="module" src="js/main.js"></script>
     </head>
     <body>
+        <header class="header">
+            <p class="header__quantity">Number of changes: </p>
+            <div class="header__choices">
+                <form id="changes-number">
+                <input type="radio" id="changes-1" name="changes" value="1" >
+                <label for="changes-1">1</label><br>
+                <input type="radio" id="changes-2" name="changes" value="2" >
+                <label for="changes-2">2</label><br>
+                <input type="radio" id="changes-3" name="changes" value="unknown" checked>
+                <label for="changes-2">1 or 2</label><br>
+            </form>
+            </div>
+            <p class="header__values">Change volume:</p>
+            <div class="header__choices">
+                <form id="changes-volume">
+                <input type="radio" id="volume-positive" name="volumes" value="+8" >
+                <label for="volume-positive">+8dB only</label><br>
+                <input type="radio" id="volume-negative" name="volumes" value="-8" checked>
+                <label for="volume-negative">-8dB only</label><br>
+                <input type="radio" id="volume-mixed" name="volumes" value="mixed" >
+                <label for="volume-mixed">mixed</label><br>
+            </form>
+            </div>
+            <button id="apply-button" class="header__apply">Apply</button>
+        </header>
         <div class="main">
             <section id="modules">
                 <div id="audioSource" class="module has-looper" audionodetype="Audio source" style="left: 515px; top: 130px;">
@@ -43,30 +69,35 @@
                         </div>
                     </div>
                 </div>
-                <div id="switch" class="module" audionodetype="switch" style="left: 543px;top: 477px;">
+                <div id="output" class="module" audionodetype="output" style="left: 543px;top: 477px;">
                     <div class="left-and-front-side">
                         <div class="front-side">
                             <div class="head">
                                 <div class="title-wrapper">
-                                    <span class="title">Switch</span>
+                                    <span class="title">Output</span>
                                 </div>
                             </div>
                             <div class="content">
                                 <div class="controllers">
-                                    <div class="switch">
-                                        <button id="switch-controllers-switch" class="right"></button>
+                                    <div>
+                                        <img src="./img/speaker.svg">
+                                    </div>
+                                    <div class="switch horizontal">
+                                        <span>A</span>
+                                        <button id="switch-controllers-switch" class="left"></button>
+                                        <span>B</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="leftEQ" class="module" audionodetype="Equalizer" style="left: 81px; top: 323px;">
+                <div id="leftEQ" class="module question" audionodetype="Equalizer" style="left: 81px; top: 323px;">
                     <div class="left-and-front-side">
                         <div class="front-side">
                             <div class="head">
                                 <div class="title-wrapper">
-                                    <span class="title">Equalizer</span>
+                                    <span class="title">Equalizer A</span>
                                 </div>
                             </div>
                             <div class="content">
@@ -85,7 +116,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="leftEQ-slider-125" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="leftEQ-slider-125" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">125</span>
@@ -104,7 +135,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="leftEQ-slider-250" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="leftEQ-slider-250" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">250</span>
@@ -123,7 +154,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="leftEQ-slider-500" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="leftEQ-slider-500" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">500</span>
@@ -142,7 +173,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="leftEQ-slider-1k" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="leftEQ-slider-1k" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">1k</span>
@@ -161,7 +192,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="leftEQ-slider-2k" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="leftEQ-slider-2k" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">2k</span>
@@ -180,7 +211,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="leftEQ-slider-4k" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="leftEQ-slider-4k" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">4k</span>
@@ -199,7 +230,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="leftEQ-slider-8k" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="leftEQ-slider-8k" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">8k</span>
@@ -216,7 +247,7 @@
                         <div class="front-side">
                             <div class="head">
                                 <div class="title-wrapper">
-                                    <span class="title">Equalizer</span>
+                                    <span class="title">Equalizer B</span>
                                 </div>
                             </div>
                             <div class="content">
@@ -235,7 +266,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="rightEQ-slider-125" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="rightEQ-slider-125" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">125</span>
@@ -254,7 +285,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="rightEQ-slider-250" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="rightEQ-slider-250" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">250</span>
@@ -273,7 +304,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="rightEQ-slider-500" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="rightEQ-slider-500" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">500</span>
@@ -292,7 +323,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="rightEQ-slider-1k" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="rightEQ-slider-1k" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">1k</span>
@@ -311,7 +342,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="rightEQ-slider-2k" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="rightEQ-slider-2k" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">2k</span>
@@ -330,7 +361,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="rightEQ-slider-4k" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="rightEQ-slider-4k" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">4k</span>
@@ -349,7 +380,7 @@
                                                 </div>
                                             </div>
                                             <div class="input-wrapper">
-                                                <input id="rightEQ-slider-8k" type="range" value="0" min="0" max="8" step="8" />
+                                                <input id="rightEQ-slider-8k" type="range" value="0" min="-8" max="8" step="8" />
                                             </div>
                                             <div class="label">
                                                 <span class="label-span">8k</span>
@@ -363,6 +394,8 @@
                 </div>
             </section>
         </div>
-        <svg id="svgCanvas" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
+        <svg id="svgCanvas" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <image href="./img/cables.svg" height="350px" width="350px" />
+        </svg>
     </body>
-</html>;
+</html>

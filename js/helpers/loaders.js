@@ -18,7 +18,13 @@ export function openFileHandler(module) {
                 // load into buffer array
                 audioContext.nameSoundBuffer[fileLoaded.name] = decodedData;
 
-                openFileButton.innerHTML = fileLoaded.name;
+                let fileName = fileLoaded.name;
+                // trim to long name
+                if (fileName.length > 18) {
+                    openFileButton.innerHTML = fileName.slice(0, 18) + "...";
+                } else {
+                    openFileButton.innerHTML = fileName;
+                }
                 openFileButton.removeAttribute("id"); // not button anymore
 
                 // add another "open file..." button
