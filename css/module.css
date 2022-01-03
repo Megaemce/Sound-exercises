@@ -62,8 +62,6 @@
 .module .head .title-wrapper {
   width: 100%;
   padding: 0 5px;
-  cursor: -webkit-grab;
-  cursor: grab;
 }
 
 .module .head .title-wrapper .title {
@@ -79,28 +77,6 @@
   color: #d1ac00;
   font-size: 20px;
   font-family: "Yellowtail", cursive;
-}
-
-.module .head .buttons-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 0 -2.5px;
-}
-
-.module .head .buttons-wrapper button {
-  margin: 0 2.5px;
-  cursor: pointer;
 }
 
 .module .content {
@@ -186,6 +162,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: 3px;
   position: relative;
   font-size: .625em;
   text-transform: uppercase;
