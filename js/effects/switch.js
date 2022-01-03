@@ -3,7 +3,7 @@ import { audioContext } from "../main.js";
 export default function outputSwitch() {
     const module = {};
 
-    module.switch = document.getElementById("module-2-controllers-switch");
+    module.switch = document.getElementById("switch-controllers-switch");
     module.track = "right";
     module.audioNode = {
         leftNode: new GainNode(audioContext),

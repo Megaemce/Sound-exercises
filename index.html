@@ -2,7 +2,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charset="utf-8" />
-        <title>mobbler: mobbly the sound</title>
+        <title>Sound exercises</title>
         <link rel="shortcut icon" href="img/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,54 +14,47 @@
     <body>
         <div class="main">
             <section id="modules">
-                <div class="selection-rect" id="selection-rect" hidden=""></div>
-                <div id="module-1" class="module has-looper" audionodetype="Audio source" style="left: 521px; top: 95px;">
+                <div id="audioSource" class="module has-looper" audionodetype="Audio source" style="left: 515px; top: 130px;">
                     <div class="left-and-front-side">
                         <div class="front-side">
                             <div class="head">
                                 <div class="title-wrapper">
                                     <span class="title">Audio source</span>
                                 </div>
-                                <div class="buttons-wrapper">
-                                    <button class="close button"></button>
-                                </div>
                             </div>
                             <div class="content">
                                 <div class="options">
-                                    <select class="module-1-content-options-select">
+                                    <select class="audioSource-content-options-select">
                                         <option>white noise</option>
                                         <option>pink noise</option>
                                         <option>brown noise</option>
                                         <option id="file button">
-                                            <button id="module-1-content-options-select-open-file">Open file...</button>
-                                            <input class="module-1-content-options-select-open-file-input" type="file" style="display: none" />
+                                            <button id="audioSource-content-options-select-open-file">Open file...</button>
+                                            <input class="audioSource-content-options-select-open-file-input" type="file" style="display: none" />
                                         </option>
                                     </select>
                                 </div>
                                 <div class="controllers">
                                     <div class="switch">
-                                        ON<button id="module-1-controllers-switch"></button>
+                                        ON<button id="audioSource-controllers-switch"></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="module-2" class="module" audionodetype="switch" style="left: 563px; top: 410px; ">
+                <div id="switch" class="module" audionodetype="switch" style="left: 543px;top: 477px;">
                     <div class="left-and-front-side">
                         <div class="front-side">
                             <div class="head">
                                 <div class="title-wrapper">
                                     <span class="title">Switch</span>
                                 </div>
-                                <div class="buttons-wrapper">
-                                    <button class="close button"></button>
-                                </div>
                             </div>
                             <div class="content">
                                 <div class="controllers">
                                     <div class="switch">
-                                        <button id="module-2-controllers-switch" class="right"></button>
+                                        <button id="switch-controllers-switch" class="right"></button>
                                     </div>
                                 </div>
                             </div>
@@ -74,9 +67,6 @@
                             <div class="head">
                                 <div class="title-wrapper">
                                     <span class="title">Equalizer</span>
-                                </div>
-                                <div class="buttons-wrapper">
-                                    <button class="close button"></button>
                                 </div>
                             </div>
                             <div class="content">
@@ -227,9 +217,6 @@
                             <div class="head">
                                 <div class="title-wrapper">
                                     <span class="title">Equalizer</span>
-                                </div>
-                                <div class="buttons-wrapper">
-                                    <button class="close button"></button>
                                 </div>
                             </div>
                             <div class="content">

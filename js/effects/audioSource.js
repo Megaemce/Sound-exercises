@@ -7,9 +7,9 @@ export default function audioSource(leftEqInput, rightEqInput) {
     const brownNoise = new AudioWorkletNode(audioContext, "brownNoise");
     const whiteNoise = new AudioWorkletNode(audioContext, "whiteNoise");
 
-    module.select = document.getElementsByClassName("module-1-content-options-select")[0];
-    module.playButton = document.getElementById("module-1-controllers-switch");
-    module.openFileInput = document.getElementsByClassName("module-1-content-options-select-open-file-input")[0];
+    module.select = document.getElementsByClassName("audioSource-content-options-select")[0];
+    module.playButton = document.getElementById("audioSource-controllers-switch");
+    module.openFileInput = document.getElementsByClassName("audioSource-content-options-select-open-file-input")[0];
 
     module.loop = false;
     module.audioNode = undefined;
