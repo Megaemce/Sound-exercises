@@ -1,0 +1,63 @@
+$yellow: #d1ac00;
+$red: #4f000b;
+$white: #edf2f4;
+$gray: #8d99ae;
+$black: #2b2d42;
+$blue: #0e4758;
+$font-quick: 'Quicksand',
+sans-serif;
+$font-yellow: 'Yellowtail',
+cursive;
+
+.start-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    z-index: 10;
+
+    color: $yellow;
+
+    background-color: $red;
+
+    transition: .5s;
+    &.hidden {
+        pointer-events: none;
+
+        z-index: 0;
+
+        opacity: 0;
+    }
+    &__heading {
+        font-family: $font-quick;
+        font-weight: 200;
+    }
+    &__play {
+        padding: 10px 30px;
+
+        position: relative;
+        margin: 30px;
+
+        font-family: $font-yellow;
+        font-size: 20px;
+        color: $yellow;
+
+        border: 1px solid $yellow;
+        border-radius: 2px;
+
+        transition: .2s;
+
+
+
+        &:hover {
+            color: $red;
+
+            background-color: $yellow;
+        }
+    }
+}

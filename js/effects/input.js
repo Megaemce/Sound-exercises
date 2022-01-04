@@ -3,7 +3,6 @@ import { openFileHandler } from "../helpers/loaders.js";
 
 export default function input(equalizerAInput, equalizerBInput) {
     const module = {};
-    const cables = document.getElementById("cables_source");
     const pinkNoise = new AudioWorkletNode(audioContext, "pinkNoise");
     const brownNoise = new AudioWorkletNode(audioContext, "brownNoise");
     const whiteNoise = new AudioWorkletNode(audioContext, "whiteNoise");

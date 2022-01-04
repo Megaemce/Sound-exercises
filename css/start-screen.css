@@ -1,0 +1,53 @@
+.start-screen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  color: #d1ac00;
+  background-color: #4f000b;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.start-screen.hidden {
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+}
+
+.start-screen__heading {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 200;
+}
+
+.start-screen__play {
+  padding: 10px 30px;
+  position: relative;
+  margin: 30px;
+  font-family: "Yellowtail", cursive;
+  font-size: 20px;
+  color: #d1ac00;
+  border: 1px solid #d1ac00;
+  border-radius: 2px;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.start-screen__play:hover {
+  color: #4f000b;
+  background-color: #d1ac00;
+}
+/*# sourceMappingURL=start-screen.css.map */

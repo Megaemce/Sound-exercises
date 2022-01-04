@@ -19,6 +19,9 @@ const cableAOuput = document.getElementById("cable_A_to_output");
 const cableBOutput = document.getElementById("cable_B_to_output");
 const cableInputA = document.getElementById("cable_input_to_A");
 const cableInputB = document.getElementById("cable_input_to_B");
+const equalizerADiv = document.getElementById("equalizerA");
+const startButton = document.getElementById("start_button");
+const startScreen = document.getElementById("start_screen");
 
 function buildConnection() {
     outputNode = output();
@@ -45,6 +48,10 @@ function buildConnection() {
     if (inputPrevState) {
         inputNode.playSound();
     }
+
+    equalizerADiv.onclick = () => {
+        equalizerADiv.classList.remove("question");
+    };
 }
 
 function destroyConnection() {
@@ -57,6 +64,8 @@ function destroyConnection() {
 
     equalizerANode.resetEqualizer();
     equalizerBNode.resetEqualizer();
+
+    equalizerADiv.classList.add("question");
 }
 
 export function deactiveAllCables() {
@@ -84,12 +93,14 @@ export function activeAllCables() {
 }
 
 // start audio with user interaction (chrome policy)
-document.onmousemove = () => {
+startButton.onclick = () => {
     try {
         audioContext = new AudioContext();
     } catch (e) {
         alert("The Web Audio API is not supported in this browser.");
     }
+
+    startScreen.classList.add("hidden");
 
     audioContext.nameSoundBuffer = new Object();
 
