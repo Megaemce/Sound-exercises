@@ -1,15 +1,16 @@
-import { audioContext } from "../main.js";
+import { audioContext, deactiveAllCables, activeAllCables } from "../main.js";
 import { openFileHandler } from "../helpers/loaders.js";
 
-export default function audioSource(leftEqInput, rightEqInput) {
+export default function input(equalizerAInput, equalizerBInput) {
     const module = {};
+    const cables = document.getElementById("cables_source");
     const pinkNoise = new AudioWorkletNode(audioContext, "pinkNoise");
     const brownNoise = new AudioWorkletNode(audioContext, "brownNoise");
     const whiteNoise = new AudioWorkletNode(audioContext, "whiteNoise");
 
-    module.select = document.getElementsByClassName("audioSource-content-options-select")[0];
-    module.playButton = document.getElementById("audioSource-controllers-switch");
-    module.openFileInput = document.getElementsByClassName("audioSource-content-options-select-open-file-input")[0];
+    module.select = document.getElementsByClassName("input-content-options-select")[0];
+    module.playButton = document.getElementById("input-controllers-switch");
+    module.openFileInput = document.getElementsByClassName("input-content-options-select-open-file-input")[0];
 
     module.loop = false;
     module.audioNode = undefined;
@@ -42,8 +43,10 @@ export default function audioSource(leftEqInput, rightEqInput) {
             module.audioNode.start();
         }
 
-        module.audioNode.connect(leftEqInput);
-        module.audioNode.connect(rightEqInput);
+        module.audioNode.connect(equalizerAInput);
+        module.audioNode.connect(equalizerBInput);
+
+        activeAllCables();
     };
     module.stopSound = () => {
         module.isTransmitting = false;
@@ -52,6 +55,8 @@ export default function audioSource(leftEqInput, rightEqInput) {
         if (module.audioNode) {
             module.audioNode.disconnect();
         }
+
+        deactiveAllCables();
     };
     // when select changes
     module.select.onchange = function (event) {

@@ -45,7 +45,7 @@ export default function equalizer(name) {
         };
     });
 
-    if (name === "leftEQ") {
+    if (name === "equalizerA") {
         const changesVolumeInputs = document.getElementById("changes-volume").childNodes;
         const changesNumberInputs = document.getElementById("changes-number").childNodes;
         let changesVolume; // +8, -8, mixed

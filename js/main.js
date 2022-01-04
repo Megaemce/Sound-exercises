@@ -1,38 +1,50 @@
 import equalizer from "./effects/equalizer.js";
-import audioSource from "./effects/audioSource.js";
+import input from "./effects/input.js";
 import output from "./effects/output.js";
 
 export let audioContext;
 
+export function setPlayingVariable(state) {
+    playing = state;
+}
+
+export let playing; // general bool to know if something is playing
 let inputNode;
 let outputNode;
-let leftEqNode;
-let rightEqNode;
+let equalizerANode;
+let equalizerBNode;
 let inputPrevState;
+
+const cableAOuput = document.getElementById("cable_A_to_output");
+const cableBOutput = document.getElementById("cable_B_to_output");
+const cableInputA = document.getElementById("cable_input_to_A");
+const cableInputB = document.getElementById("cable_input_to_B");
 
 function buildConnection() {
     outputNode = output();
-    leftEqNode = equalizer("leftEQ");
-    rightEqNode = equalizer("rightEQ");
+    equalizerANode = equalizer("equalizerA");
+    equalizerBNode = equalizer("equalizerB");
 
     const outputLeft = outputNode.audioNode.leftNode;
     const outputRight = outputNode.audioNode.rightNode;
     const outputOutput = outputNode.audioNode.outputNode;
-    const leftEqInput = leftEqNode.audioNode.inputNode;
-    const leftEqOutput = leftEqNode.audioNode.outputNode;
-    const rightEqInput = rightEqNode.audioNode.inputNode;
-    const rightEqOutput = rightEqNode.audioNode.outputNode;
+    const equalizerAInput = equalizerANode.audioNode.inputNode;
+    const equalizerAOutput = equalizerANode.audioNode.outputNode;
+    const equalizerBInput = equalizerBNode.audioNode.inputNode;
+    const equalizerBOutput = equalizerBNode.audioNode.outputNode;
 
-    inputNode = audioSource(leftEqInput, rightEqInput);
+    inputNode = input(equalizerAInput, equalizerBInput);
 
     outputOutput.connect(audioContext.destination);
-    leftEqOutput.connect(outputLeft);
-    rightEqOutput.connect(outputRight);
+    equalizerAOutput.connect(outputLeft);
+    equalizerBOutput.connect(outputRight);
 
     outputNode.audioNode.switchTo("left");
 
     // if something was playing before don't stop it
-    if (inputPrevState) inputNode.playSound();
+    if (inputPrevState) {
+        inputNode.playSound();
+    }
 }
 
 function destroyConnection() {
@@ -40,11 +52,35 @@ function destroyConnection() {
 
     inputNode.stopSound();
     outputNode.audioNode.outputNode.disconnect();
-    leftEqNode.audioNode.outputNode.disconnect();
-    rightEqNode.audioNode.outputNode.disconnect();
+    equalizerANode.audioNode.outputNode.disconnect();
+    equalizerBNode.audioNode.outputNode.disconnect();
 
-    leftEqNode.resetEqualizer();
-    rightEqNode.resetEqualizer();
+    equalizerANode.resetEqualizer();
+    equalizerBNode.resetEqualizer();
+}
+
+export function deactiveAllCables() {
+    cableAOuput.setAttribute("stroke", "black");
+    cableBOutput.setAttribute("stroke", "black");
+    cableInputA.setAttribute("stroke", "black");
+    cableInputB.setAttribute("stroke", "black");
+}
+
+export function activeAllCables() {
+    if (inputNode.isTransmitting) {
+        if (outputNode.track === "B") {
+            cableInputB.setAttribute("stroke", "url(#grad-right-to-left)");
+            cableBOutput.setAttribute("stroke", "url(#grad-right-to-left)");
+            cableAOuput.setAttribute("stroke", "black");
+            cableInputA.setAttribute("stroke", "black");
+        }
+        if (outputNode.track === "A") {
+            cableInputA.setAttribute("stroke", "url(#grad-top-to-bottom)");
+            cableAOuput.setAttribute("stroke", "url(#grad-left-to-right)");
+            cableBOutput.setAttribute("stroke", "black");
+            cableInputB.setAttribute("stroke", "black");
+        }
+    }
 }
 
 // start audio with user interaction (chrome policy)
