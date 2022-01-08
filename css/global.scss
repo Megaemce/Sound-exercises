@@ -55,15 +55,32 @@ body {
     background-color: $blue;
 }
 
-svg {
+.main {
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cable {
     width: 350px;
     height: 350px;
 
     position: absolute;
     z-index: -1;
 
-    top: 190px;
-    left: 423px;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%, 0);
 
     filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, .2));
+
+    @media only screen and (max-width: 1000px) {
+        display: none;
+    }
+}
+
+* {
+    box-sizing: border-box;
 }

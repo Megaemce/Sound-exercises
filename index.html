@@ -1,448 +1,924 @@
 <html class="no-js" lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charset="utf-8" />
-        <title>Sound exercises</title>
-        <link rel="shortcut icon" href="img/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Yellowtail&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="css/global.css" />
-        <link rel="stylesheet" href="css/module.css" />
-        <link rel="stylesheet" href="css/header.css" />
-        <link rel="stylesheet" href="css/start-screen.css" />
-        <script type="module" src="js/main.js"></script>
-    </head>
-    <body>
-        <header class="header">
-            <p class="header__quantity">Number of changes: </p>
-            <div class="header__choices">
-                <form id="changes-number">
-                <input type="radio" id="changes-1" name="changes" value="1" checked>
-                <label for="changes-1">1</label><br>
-                <input type="radio" id="changes-2" name="changes" value="2" >
-                <label for="changes-2">2</label><br>
-                <input type="radio" id="changes-3" name="changes" value="unknown" >
-                <label for="changes-2">1 or 2</label><br>
-            </form>
-            </div>
-            <p class="header__values">Change volume:</p>
-            <div class="header__choices">
-                <form id="changes-volume">
-                <input type="radio" id="volume-positive" name="volumes" value="+8" checked>
-                <label for="volume-positive">+8dB only</label><br>
-                <input type="radio" id="volume-negative" name="volumes" value="-8" >
-                <label for="volume-negative">-8dB only</label><br>
-                <input type="radio" id="volume-mixed" name="volumes" value="mixed" >
-                <label for="volume-mixed">mixed</label><br>
-            </form>
-            </div>
-            <button id="apply-button" class="header__apply">Apply</button>
-        </header>
-        <div id="start_screen" class="start-screen">
-            <h1 class="start-screen__heading">Ready to try your hearing?</h1>
-            <button id="start_button" class="start-screen__play">Play</button>
-            <p class="start-screen__paragraph">Put on headphones</p>
-        </div>
-        <div class="main">
-            <section id="modules">
-                <div id="input" class="module" audionodetype="Audio source" style="left: 515px; top: 130px;">
-                    <div class="left-and-front-side">
-                        <div class="front-side">
-                            <div class="head">
-                                <div class="title-wrapper">
-                                    <span class="title">Input</span>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <div class="options">
-                                    <select class="input-content-options-select">
-                                        <option>white noise</option>
-                                        <option>pink noise</option>
-                                        <option>brown noise</option>
-                                        <option id="file button">
-                                            <button id="input-content-options-select-open-file">Open file...</button>
-                                            <input class="input-content-options-select-open-file-input" type="file" style="display: none" />
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="controllers">
-                                    <div class="switch">
-                                        ON<button id="input-controllers-switch"></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="output" class="module" audionodetype="output" style="left: 543px;top: 477px;">
-                    <div class="left-and-front-side">
-                        <div class="front-side">
-                            <div class="head">
-                                <div class="title-wrapper">
-                                    <span class="title">Output</span>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <div class="controllers">
-                                    <div>
-                                        <img src="./img/speaker.svg">
-                                    </div>
-                                    <div class="switch horizontal">
-                                        <span>A</span>
-                                        <button id="switch-controllers-switch" class="left"></button>
-                                        <span>B</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="equalizerA" class="module question" audionodetype="Equalizer" style="left: 81px; top: 323px;">
-                    <div class="left-and-front-side">
-                        <div class="front-side">
-                            <div class="head">
-                                <div class="title-wrapper">
-                                    <span class="title">Equalizer A</span>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <div class="controllers">
-                                    <div class="sliders">
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerA-slider-125-plus">+</span>
-                                                        <span id="equalizerA-slider-125-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerA-slider-125" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">125</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerA-slider-250-plus">+</span>
-                                                        <span id="equalizerA-slider-250-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerA-slider-250" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">250</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerA-slider-500-plus">+</span>
-                                                        <span id="equalizerA-slider-500-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerA-slider-500" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">500</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerA-slider-1k-plus">+</span>
-                                                        <span id="equalizerA-slider-1k-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerA-slider-1k" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">1k</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerA-slider-2k-plus">+</span>
-                                                        <span id="equalizerA-slider-2k-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerA-slider-2k" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">2k</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerA-slider-4k-plus">+</span>
-                                                        <span id="equalizerA-slider-4k-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerA-slider-4k" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">4k</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerA-slider-8k-plus">+</span>
-                                                        <span id="equalizerA-slider-8k-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerA-slider-8k" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">8k</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="equalizerB" class="module" audionodetype="Equalizer" style="left: 713px; top: 320px;">
-                    <div class="left-and-front-side">
-                        <div class="front-side">
-                            <div class="head">
-                                <div class="title-wrapper">
-                                    <span class="title">Equalizer B</span>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <div class="controllers">
-                                    <div class="sliders">
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerB-slider-125-plus">+</span>
-                                                        <span id="equalizerB-slider-125-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerB-slider-125" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">125</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerB-slider-250-plus">+</span>
-                                                        <span id="equalizerB-slider-250-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerB-slider-250" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">250</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerB-slider-500-plus">+</span>
-                                                        <span id="equalizerB-slider-500-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerB-slider-500" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">500</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerB-slider-1k-plus">+</span>
-                                                        <span id="equalizerB-slider-1k-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerB-slider-1k" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">1k</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerB-slider-2k-plus">+</span>
-                                                        <span id="equalizerB-slider-2k-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerB-slider-2k" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">2k</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerB-slider-4k-plus">+</span>
-                                                        <span id="equalizerB-slider-4k-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerB-slider-4k" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">4k</span>
-                                            </div>
-                                        </div>
-                                        <div class="slider">
-                                            <div class="slider-info">
-                                                <div class="value-unit">
-                                                    <div class="valueWrapper">
-                                                        <span id="equalizerB-slider-8k-plus">+</span>
-                                                        <span id="equalizerB-slider-8k-value" class="value">
-                                                            0
-                                                        </span>
-                                                    </div>
-                                                    <span class="value">dB</span>
-                                                </div>
-                                            </div>
-                                            <div class="input-wrapper">
-                                                <input id="equalizerB-slider-8k" type="range" value="0" min="-8" max="8" step="8" />
-                                            </div>
-                                            <div class="label">
-                                                <span class="label-span">8k</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <svg width="168.27mm" height="200.38mm" version="1.1" viewBox="0 0 168.27 200.38" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-				<linearGradient id="grad-left-to-right" x1="0%" y1="50%" x2="100%" y2="50%">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8" />
+		<title>Sound exercises</title>
+		<link rel="shortcut icon" href="img/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Yellowtail&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/global.css" />
+		<link rel="stylesheet" href="css/module.css" />
+		<link rel="stylesheet" href="css/header.css" />
+		<link rel="stylesheet" href="css/start-screen.css" />
+		<script type="module" src="js/main.js"></script>
+	</head>
+	<body>
+		<div id="start_screen" class="start-screen">
+			<h1 class="start-screen__heading">Ready to try your hearing?</h1>
+			<button id="start_button" class="start-screen__play">Play</button>
+			<p class="start-screen__paragraph">Put on headphones</p>
+		</div>
+		<div class="main">
+			<section id="modules">
+				<div
+					id="input"
+					class="module"
+					audionodetype="Audio source"
+				>
+					<div class="left-and-front-side">
+						<div class="front-side">
+							<div class="head">
+								<div class="title-wrapper">
+									<span class="title">Input</span>
+								</div>
+							</div>
+							<div class="content">
+								<div class="options">
+									<select
+										class="input-content-options-select"
+									>
+										<option>white noise</option>
+										<option>pink noise</option>
+										<option>brown noise</option>
+										<option id="file button">
+											<button
+												id="input-content-options-select-open-file"
+											>
+												Open file...
+											</button>
+											<input
+												class="input-content-options-select-open-file-input"
+												type="file"
+												style="display: none"
+											/>
+										</option>
+									</select>
+								</div>
+								<div class="controllers">
+									<div class="switch">
+										ON<button
+											id="input-controllers-switch"
+										></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div
+					id="equalizerA"
+					class="module question silent"
+					audionodetype="Equalizer"
+				>
+					<div class="left-and-front-side">
+						<div class="front-side">
+							<div class="head">
+								<div class="title-wrapper">
+									<span class="title">Equalizer A</span>
+								</div>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									id="prefix__Component_7_2"
+									width="46.148"
+									height="43.078"
+									data-name="Component 7 – 2"
+									viewBox="0 0 46.148 43.078"
+									class="reset"
+								>
+									<g
+										id="prefix__Group_496"
+										data-name="Group 496"
+									>
+										<path
+											id="prefix__Path_6132"
+											d="M46.06 37.614a1.162 1.162 0 0 0-1.1-.721l-1.945.038a21.539 21.539 0 1 0-5.7 16.3 3.493 3.493 0 1 0-5.115-4.757 14.553 14.553 0 1 1 3.722-12.126l-2.265-.242A1.164 1.164 0 0 0 32.629 38l5.344 6.611a1.165 1.165 0 0 0 1.709.111l6.105-5.822a1.164 1.164 0 0 0 .273-1.286zm-7.07 4.547l-2.782-3.441.9.1a1.164 1.164 0 0 0 1.286-1.224 16.881 16.881 0 1 0-4.488 12.464 1.164 1.164 0 0 1 1.705 1.585 19.211 19.211 0 1 1 5.132-13.5 1.164 1.164 0 0 0 1.164 1.139h.105z"
+											data-name="Path 6132"
+											transform="translate(0 -17.029)"
+										/>
+									</g>
+								</svg>
+								<svg
+									class="config"
+									version="1.1"
+									id="Layer_1"
+									xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink"
+									x="0px"
+									y="0px"
+									viewBox="0 0 512.003 512.003"
+									style="
+										enable-background: new 0 0 512.003
+											512.003;
+									"
+									xml:space="preserve"
+								>
+									<g>
+										<g>
+											<path
+												d="M491.584,192.579l-55.918-6.914c-0.919-2.351-1.884-4.682-2.892-6.993l34.648-44.428
+			c7.227-9.267,6.412-22.464-1.899-30.773l-57.028-56.996c-8.308-8.304-21.502-9.114-30.763-1.893L333.32,79.216
+			c-2.312-1.008-4.644-1.974-6.994-2.894l-6.915-55.904c-1.443-11.66-11.348-20.415-23.097-20.415h-80.637
+			c-11.748,0-21.656,8.755-23.097,20.416l-6.914,55.904c-2.349,0.919-4.681,1.884-6.988,2.89l-44.415-34.642
+			c-9.261-7.222-22.458-6.414-30.768,1.894l-57.021,57.009c-8.31,8.307-9.123,21.506-1.896,30.771l34.644,44.417
+			c-1.012,2.312-1.978,4.647-2.9,7.002l-55.906,6.914C8.757,194.022,0,203.927,0,215.676v80.64c0,11.75,8.758,21.658,20.421,23.097
+			l55.901,6.903c0.919,2.352,1.884,4.686,2.894,6.994l-34.641,44.417c-7.224,9.264-6.411,22.46,1.894,30.767l57.021,57.031
+			c8.307,8.31,21.507,9.121,30.773,1.896l44.417-34.648c2.306,1.007,4.638,1.974,6.987,2.891l6.914,55.921
+			c1.441,11.66,11.348,20.416,23.097,20.416h80.637c11.748,0,21.655-8.755,23.097-20.416l6.915-55.92
+			c2.351-0.92,4.682-1.885,6.993-2.892l44.425,34.65c9.266,7.225,22.463,6.414,30.771-1.898l57.015-57.031
+			c8.307-8.308,9.117-21.504,1.893-30.768l-34.641-44.409c1.012-2.313,1.978-4.647,2.898-7.002l55.901-6.903
+			c11.661-1.44,20.421-11.348,20.421-23.097v-80.64C512,203.927,503.243,194.022,491.584,192.579z M465.455,275.74l-49.864,6.158
+			c-9.151,1.131-16.772,7.556-19.431,16.386c-2.813,9.337-6.56,18.387-11.138,26.903c-4.367,8.124-3.525,18.063,2.147,25.335
+			l30.898,39.613l-27.924,27.932l-39.621-30.905c-7.269-5.668-17.202-6.513-25.327-2.15c-8.513,4.572-17.565,8.319-26.905,11.134
+			c-8.827,2.661-15.25,10.279-16.381,19.427l-6.169,49.883h-39.492l-6.167-49.883c-1.131-9.146-7.551-16.763-16.375-19.425
+			c-9.367-2.825-18.417-6.571-26.899-11.132c-8.122-4.369-18.061-3.527-25.336,2.147l-39.615,30.902L93.929,390.13l30.897-39.618
+			c5.671-7.273,6.513-17.206,2.147-25.328c-4.568-8.501-8.315-17.554-11.137-26.911c-2.662-8.825-10.282-15.247-19.43-16.376
+			l-49.861-6.156v-39.492l49.866-6.167c9.146-1.131,16.763-7.551,19.423-16.375c2.824-9.356,6.572-18.406,11.143-26.9
+			c4.374-8.124,3.533-18.067-2.143-25.342l-30.903-39.62l27.924-27.918l39.62,30.902c7.273,5.672,17.209,6.513,25.335,2.146
+			c8.493-4.565,17.541-8.31,26.896-11.132c8.825-2.662,15.247-10.279,16.378-19.427l6.166-49.867h39.494l6.169,49.869
+			c1.133,9.148,7.557,16.767,16.384,19.427c9.328,2.811,18.379,6.557,26.902,11.135c8.122,4.364,18.055,3.522,25.325-2.149
+			l39.616-30.894l27.927,27.912l-30.897,39.618c-5.666,7.267-6.513,17.191-2.158,25.311c4.58,8.54,8.328,17.599,11.138,26.923
+			c2.661,8.825,10.279,15.248,19.427,16.381l49.878,6.169V275.74z"
+											/>
+										</g>
+									</g>
+									<g>
+										<g>
+											<path
+												d="M255.997,155.153c-55.606,0-100.845,45.244-100.845,100.856c0,55.603,45.239,100.839,100.845,100.839
+			c55.609,0,100.852-45.236,100.852-100.839C356.849,200.397,311.606,155.153,255.997,155.153z M255.997,310.303
+			c-29.941,0-54.3-24.356-54.3-54.294c0-29.947,24.359-54.311,54.3-54.311c29.944,0,54.306,24.363,54.306,54.311
+			C310.303,285.947,285.941,310.303,255.997,310.303z"
+											/>
+										</g>
+									</g>
+								</svg>
+							</div>
+							<div class="config-panel">
+								<div class="config-panel__questions">
+									<div class="config-panel__question">
+										<p class="config-panel__quantity">
+											Number of changes:
+										</p>
+										<div class="config-panel__choices">
+											<form id="changes-number">
+												<label class="radio">
+													<input
+														type="radio"
+														id="changes-1"
+														name="changes"
+														value="1"
+														checked
+													/>
+													1
+													<div class="circle"></div>
+												</label>
+												<label class="radio">
+													<input
+														type="radio"
+														id="changes-2"
+														name="changes"
+														value="2"
+													/>
+													2
+													<div class="circle"></div>
+												</label>
+												<label class="radio">
+													<input
+														type="radio"
+														id="changes-3"
+														name="changes"
+														value="unknown"
+													/>
+													1 or 2
+													<div class="circle"></div>
+												</label>
+											</form>
+										</div>
+									</div>
+									<div class="config-panel__question">
+										<p class="config-panel__values">
+											Change volume:
+										</p>
+										<div class="config-panel__choices">
+											<form id="changes-volume">
+												<label class="radio">
+													<input
+														type="radio"
+														id="volume-positive"
+														name="volumes"
+														value="+8"
+														checked
+													/>
+													+8dB only
+													<div class="circle"></div>
+												</label>
+												<label class="radio">
+													<input
+														type="radio"
+														id="volume-negative"
+														name="volumes"
+														value="-8"
+													/>
+													-8dB only
+													<div class="circle"></div>
+												</label>
+												<label class="radio">
+													<input
+														type="radio"
+														id="volume-mixed"
+														name="volumes"
+														value="mixed"
+													/>
+													mixed
+													<div class="circle"></div>
+												</label>
+											</form>
+										</div>
+									</div>
+								</div>
+								<button
+									id="apply-button"
+									class="config-panel__apply"
+								>
+									Apply
+								</button>
+							</div>
+							<div class="content">
+								<div class="controllers">
+									<div class="sliders">
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerA-slider-125-plus"
+															>+</span
+														>
+														<span
+															id="equalizerA-slider-125-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerA-slider-125"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>125</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerA-slider-250-plus"
+															>+</span
+														>
+														<span
+															id="equalizerA-slider-250-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerA-slider-250"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>250</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerA-slider-500-plus"
+															>+</span
+														>
+														<span
+															id="equalizerA-slider-500-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerA-slider-500"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>500</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerA-slider-1k-plus"
+															>+</span
+														>
+														<span
+															id="equalizerA-slider-1k-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerA-slider-1k"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>1k</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerA-slider-2k-plus"
+															>+</span
+														>
+														<span
+															id="equalizerA-slider-2k-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerA-slider-2k"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>2k</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerA-slider-4k-plus"
+															>+</span
+														>
+														<span
+															id="equalizerA-slider-4k-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerA-slider-4k"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>4k</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerA-slider-8k-plus"
+															>+</span
+														>
+														<span
+															id="equalizerA-slider-8k-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerA-slider-8k"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>8k</span
+												>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					id="equalizerB"
+					class="module"
+					audionodetype="Equalizer"
+				>
+					<div class="left-and-front-side">
+						<div class="front-side">
+							<div class="head">
+								<div class="title-wrapper">
+									<span class="title">Equalizer B</span>
+								</div>
+							</div>
+							<div class="content">
+								<div class="controllers">
+									<div class="sliders">
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerB-slider-125-plus"
+															>+</span
+														>
+														<span
+															id="equalizerB-slider-125-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerB-slider-125"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>125</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerB-slider-250-plus"
+															>+</span
+														>
+														<span
+															id="equalizerB-slider-250-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerB-slider-250"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>250</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerB-slider-500-plus"
+															>+</span
+														>
+														<span
+															id="equalizerB-slider-500-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerB-slider-500"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>500</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerB-slider-1k-plus"
+															>+</span
+														>
+														<span
+															id="equalizerB-slider-1k-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerB-slider-1k"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>1k</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerB-slider-2k-plus"
+															>+</span
+														>
+														<span
+															id="equalizerB-slider-2k-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerB-slider-2k"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>2k</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerB-slider-4k-plus"
+															>+</span
+														>
+														<span
+															id="equalizerB-slider-4k-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerB-slider-4k"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>4k</span
+												>
+											</div>
+										</div>
+										<div class="slider">
+											<div class="slider-info">
+												<div class="value-unit">
+													<div class="valueWrapper">
+														<span
+															id="equalizerB-slider-8k-plus"
+															>+</span
+														>
+														<span
+															id="equalizerB-slider-8k-value"
+															class="value"
+														>
+															0
+														</span>
+													</div>
+													<span class="value"
+														>dB</span
+													>
+												</div>
+											</div>
+											<div class="input-wrapper">
+												<input
+													id="equalizerB-slider-8k"
+													type="range"
+													value="0"
+													min="-8"
+													max="8"
+													step="8"
+												/>
+											</div>
+											<div class="label">
+												<span class="label-span"
+													>8k</span
+												>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+                <div
+					id="output"
+					class="module"
+					audionodetype="output"
+				>
+					<div class="left-and-front-side">
+						<div class="front-side">
+							<div class="head">
+								<div class="title-wrapper">
+									<span class="title">Output</span>
+								</div>
+							</div>
+							<div class="content">
+								<div class="controllers">
+									<div>
+										<img src="./img/speaker.svg" />
+									</div>
+									<div class="switch horizontal">
+										<span>A</span>
+										<button
+											id="switch-controllers-switch"
+											class="left"
+										></button>
+										<span>B</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+                <svg
+			width="168.27mm"
+			height="200.38mm"
+			version="1.1"
+			viewBox="0 0 168.27 200.38"
+			xmlns="http://www.w3.org/2000/svg"
+			class="cable"
+		>
+			<defs>
+				<linearGradient
+					id="grad-left-to-right"
+					x1="0%"
+					y1="50%"
+					x2="100%"
+					y2="50%"
+				>
 					<stop offset="0%" stop-color="black" />
-					<stop offset="50%" stop-color="#FFD700"/>
+					<stop offset="50%" stop-color="#FFD700" />
 					<stop offset="100%" stop-color="black" />
-					<animateTransform attributeName="gradientTransform"
+					<animateTransform
+						attributeName="gradientTransform"
 						type="translate"
 						from="-1 0"
 						to="1 0"
 						begin="0s"
 						dur="1.5s"
-						repeatCount="indefinite"/>
+						repeatCount="indefinite"
+					/>
 				</linearGradient>
-				<linearGradient id="grad-top-to-bottom" x1="50%" y1="0%" x2="50%" y2="100%">
+				<linearGradient
+					id="grad-top-to-bottom"
+					x1="50%"
+					y1="0%"
+					x2="50%"
+					y2="100%"
+				>
 					<stop offset="0%" stop-color="black" />
-					<stop offset="50%" stop-color="#FFD700"/>
+					<stop offset="50%" stop-color="#FFD700" />
 					<stop offset="100%" stop-color="black" />
-					<animateTransform attributeName="gradientTransform"
+					<animateTransform
+						attributeName="gradientTransform"
 						type="translate"
 						from="0 -1"
 						to="0 1"
 						begin="0s"
 						dur="1.5s"
-						repeatCount="indefinite"/>
+						repeatCount="indefinite"
+					/>
 				</linearGradient>
-				<linearGradient id="grad-right-to-left" x1="100%" y1="50%" x2="0%" y2="50%">
+				<linearGradient
+					id="grad-right-to-left"
+					x1="100%"
+					y1="50%"
+					x2="0%"
+					y2="50%"
+				>
 					<stop offset="0%" stop-color="black" />
-					<stop offset="50%" stop-color="#FFD700"/>
+					<stop offset="50%" stop-color="#FFD700" />
 					<stop offset="100%" stop-color="black" />
-					<animateTransform attributeName="gradientTransform"
+					<animateTransform
+						attributeName="gradientTransform"
 						type="translate"
 						from="1 0"
 						to="-1 0"
 						begin="0s"
 						dur="1.5s"
-						repeatCount="indefinite"/>
+						repeatCount="indefinite"
+					/>
 				</linearGradient>
 			</defs>
-                <path id="cable_input_to_A" transform="matrix(-1 0 0 1 189.35 68.326)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1.365" d="m127.73-62.75c3.0289 0.55286 5.9961 1.4431 8.8291 2.649 12.378 5.2686 21.747 16.67 25.449 29.604 3.514 12.279 2.2304 25.57 5.9857 37.777 3.5881 11.664 11.87 21.81 22.579 27.662"/>
-                <path id="cable_input_to_B" transform="matrix(-1 0 0 1 189.35 68.326)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1.365" d="m128.76-54.908c10.782 3.1132 20.35 10.256 26.4 19.709 6.0497 9.4527 8.5284 21.132 6.8393 32.227-0.46637 3.0634-1.2453 6.0993-2.5801 8.8957-1.3348 2.7965-3.2451 5.3527-5.7296 7.2044-2.2646 1.6878-4.9611 2.7557-7.7408 3.2568-2.7796 0.5011-5.6424 0.4474-8.4351 0.02498-5.5853-0.84485-10.835-3.1274-16.025-5.3592-6.8906-2.9635-14.095-5.9312-21.588-5.5921-3.7466 0.16953-7.5015 1.2071-10.601 3.3193-3.0991 2.1122-5.4944 5.3498-6.2443 9.0245-0.75704 3.7099 0.23422 7.7247 2.5759 10.7 2.3417 2.9754 5.9789 4.8752 9.754 5.1681s7.6354-1.006 10.513-3.4672c2.8773-2.4613 4.7512-6.0449 5.2029-9.8043 0.36774-3.0606-0.18516-6.21-1.4655-9.0141-1.2804-2.8041-3.2746-5.2635-5.6799-7.1915-4.8104-3.856-11.137-5.5051-17.301-5.4165s-12.205 1.8034-17.931 4.0894c-5.7257 2.286-11.202 5.1466-16.83 7.6649-9.6618 4.3237-19.776 7.6368-30.123 9.8678"/>
-                <path id="cable_A_to_output" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1.365" d="m0.16057 145.94c2.0623-5.0146 6.3209-9.0796 11.426-10.907 5.0914-1.822 10.946-1.3893 15.711 1.1686 4.1015 2.202 7.289 5.8104 11.296 8.1799 4.4603 2.6375 9.7583 3.6127 14.939 3.5139 5.1808-0.0988 10.287-1.2186 15.3-2.5316 5.0126-1.313 9.9827-2.8266 15.083-3.7408 5.1005-0.91416 10.383-1.2159 15.443-0.098 7.3917 1.6332 14.04 6.3917 17.969 12.862s5.0863 14.563 3.1271 21.875c-1.9592 7.312-7.0076 13.743-13.646 17.381-6.638 3.6388-14.775 4.4359-21.993 2.1545"/>
-                <path id="cable_B_to_output" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1.365" d="m84.561 187.49c6.2602 0.85574 12.766-0.17675 18.454-2.9286 5.6877-2.7519 10.535-7.2124 13.749-12.652 1.9978-3.381 3.3606-7.0912 5.0149-10.653 1.6543-3.5617 3.6684-7.0616 6.6631-9.6022 3.9753-3.3724 9.3798-4.7375 14.59-4.559 5.2347 0.1793 10.411 1.8371 14.776 4.7324 4.3648 2.8952 7.9051 7.0191 10.106 11.772"/>
-        </svg>
-    </body>
+			<path
+				id="cable_input_to_A"
+				transform="matrix(-1 0 0 1 189.35 68.326)"
+				fill="none"
+				stroke="#000"
+				stroke-linejoin="round"
+				stroke-width="1.365"
+				d="m127.73-62.75c3.0289 0.55286 5.9961 1.4431 8.8291 2.649 12.378 5.2686 21.747 16.67 25.449 29.604 3.514 12.279 2.2304 25.57 5.9857 37.777 3.5881 11.664 11.87 21.81 22.579 27.662"
+			/>
+			<path
+				id="cable_input_to_B"
+				transform="matrix(-1 0 0 1 189.35 68.326)"
+				fill="none"
+				stroke="#000"
+				stroke-linejoin="round"
+				stroke-width="1.365"
+				d="m128.76-54.908c10.782 3.1132 20.35 10.256 26.4 19.709 6.0497 9.4527 8.5284 21.132 6.8393 32.227-0.46637 3.0634-1.2453 6.0993-2.5801 8.8957-1.3348 2.7965-3.2451 5.3527-5.7296 7.2044-2.2646 1.6878-4.9611 2.7557-7.7408 3.2568-2.7796 0.5011-5.6424 0.4474-8.4351 0.02498-5.5853-0.84485-10.835-3.1274-16.025-5.3592-6.8906-2.9635-14.095-5.9312-21.588-5.5921-3.7466 0.16953-7.5015 1.2071-10.601 3.3193-3.0991 2.1122-5.4944 5.3498-6.2443 9.0245-0.75704 3.7099 0.23422 7.7247 2.5759 10.7 2.3417 2.9754 5.9789 4.8752 9.754 5.1681s7.6354-1.006 10.513-3.4672c2.8773-2.4613 4.7512-6.0449 5.2029-9.8043 0.36774-3.0606-0.18516-6.21-1.4655-9.0141-1.2804-2.8041-3.2746-5.2635-5.6799-7.1915-4.8104-3.856-11.137-5.5051-17.301-5.4165s-12.205 1.8034-17.931 4.0894c-5.7257 2.286-11.202 5.1466-16.83 7.6649-9.6618 4.3237-19.776 7.6368-30.123 9.8678"
+			/>
+			<path
+				id="cable_A_to_output"
+				fill="none"
+				stroke="#000"
+				stroke-linejoin="round"
+				stroke-width="1.365"
+				d="m0.16057 145.94c2.0623-5.0146 6.3209-9.0796 11.426-10.907 5.0914-1.822 10.946-1.3893 15.711 1.1686 4.1015 2.202 7.289 5.8104 11.296 8.1799 4.4603 2.6375 9.7583 3.6127 14.939 3.5139 5.1808-0.0988 10.287-1.2186 15.3-2.5316 5.0126-1.313 9.9827-2.8266 15.083-3.7408 5.1005-0.91416 10.383-1.2159 15.443-0.098 7.3917 1.6332 14.04 6.3917 17.969 12.862s5.0863 14.563 3.1271 21.875c-1.9592 7.312-7.0076 13.743-13.646 17.381-6.638 3.6388-14.775 4.4359-21.993 2.1545"
+			/>
+			<path
+				id="cable_B_to_output"
+				fill="none"
+				stroke="#000"
+				stroke-linejoin="round"
+				stroke-width="1.365"
+				d="m84.561 187.49c6.2602 0.85574 12.766-0.17675 18.454-2.9286 5.6877-2.7519 10.535-7.2124 13.749-12.652 1.9978-3.381 3.3606-7.0912 5.0149-10.653 1.6543-3.5617 3.6684-7.0616 6.6631-9.6022 3.9753-3.3724 9.3798-4.7375 14.59-4.559 5.2347 0.1793 10.411 1.8371 14.776 4.7324 4.3648 2.8952 7.9051 7.0191 10.106 11.772"
+			/>
+		</svg>
+			</section>
+		</div>
+		
+	</body>
 </html>

@@ -30,7 +30,7 @@ cursive;
 }
 
 .module.question {
-    &::after {
+    &::before {
         content: '?';
 
         display: flex;
@@ -38,7 +38,7 @@ cursive;
         justify-content: center;
 
         position: absolute;
-        z-index: 1000;
+        z-index: 2;
         top: 35px;
         right: 0;
         bottom: 0;
@@ -47,16 +47,79 @@ cursive;
         cursor: pointer;
 
         font-size: 160px;
+        pointer-events: none;
         color: $blue;
-    }.content {
-        filter: blur( 5px);
+    }
+
+    &.question-next::before {
+        animation: slider 1.5s forwards;
+    }
+
+    .head {
+        z-index: 3;
+        position: relative;
+
+        .reset,
+        .config {
+            fill: $yellow;
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            border-radius: 100%;
+        }
+
+        .reset {
+            right: 10px;
+
+
+        }
+
+        .config {
+            left: 10px;
+
+        }
+    }
+
+    .content {
+        cursor: pointer;
+        filter: blur(5px);
 
         .slider input[type="range"]::-webkit-slider-thumb {
             display: none;
         }
     }
 }
-.module .head {
+
+@keyframes slider {
+    0% {
+        left: 0;
+    }
+
+    49% {
+        left: -500px;
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    51% {
+        left: 500px;
+    }
+
+    51% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+
+.head {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -65,13 +128,15 @@ cursive;
 
     border-bottom: 1px solid $yellow;
     background-color: $red;
+
+
 }
 
 .module .head .title-wrapper {
     width: 100%;
 }
 
-.module .head .title-wrapper .title {
+.head .title-wrapper .title {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -81,6 +146,7 @@ cursive;
     font-family: $font-yellow;
     font-size: 20px;
     color: $yellow;
+
 }
 
 .module .content {
@@ -173,19 +239,21 @@ cursive;
 
     -webkit-transition: background-image .1s;
     -moz-transition: background-image .1s;
+
     -o-transition: background-image .1s;
-}
 
-.module .content .controllers .switch button.switch-on {
-    background-image: url('../img/switch_on.svg');
-}
+    &.switch-on {
+        background-image: url('../img/switch_on.svg');
+    }
 
-.module .content .controllers .switch button.right {
-    background-image: url('../img/switch_right.svg');
-}
+    &.right {
+        background-image: url('../img/switch_right.svg');
+    }
 
-.module .content .controllers .switch button.left {
-    background-image: url('../img/switch_left.svg');
+    &.left {
+        background-image: url('../img/switch_left.svg');
+    }
+
 }
 
 .module .content .controllers .sliders {
@@ -247,7 +315,7 @@ cursive;
 
     color: $blue;
 
-    & > .value {
+    &>.value {
         color: $gray;
     }
 }
@@ -332,3 +400,45 @@ cursive;
         display: none;
     }
 }
+
+.module {
+    @media only screen and (max-width: 1000px) {
+        position: static !important;
+        margin: 10px 0;
+    }
+
+}
+
+#modules {
+    width: 1000px;
+    height: 570px;position: relative;
+    @media only screen and (max-width: 1000px) {
+        width: auto;
+        height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}}
+
+@media only screen and (min-width: 1001px) {
+#input {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#equalizerB {
+    top: 180px;
+    left: calc(50% + 130px);
+}
+#equalizerA {
+    top: 180px;
+    right: calc(50% + 130px);
+}
+
+#output {
+    top: 380px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}}

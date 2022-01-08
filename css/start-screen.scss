@@ -12,13 +12,13 @@ cursive;
 .start-screen {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;box-sizing: border-box;
     justify-content: center;
-
+top:0;
     width: 100%;
     height: 100%;
 
-    position: absolute;
+    position: fixed;
     z-index: 10;
 
     color: $yellow;
@@ -26,6 +26,9 @@ cursive;
     background-color: $red;
 
     transition: .5s;
+
+    padding: 20px;
+
     &.hidden {
         pointer-events: none;
 
@@ -33,10 +36,13 @@ cursive;
 
         opacity: 0;
     }
+
     &__heading {
         font-family: $font-quick;
         font-weight: 200;
+        text-align: center;
     }
+
     &__play {
         padding: 10px 30px;
 
@@ -51,8 +57,6 @@ cursive;
         border-radius: 2px;
 
         transition: .2s;
-
-
 
         &:hover {
             color: $red;

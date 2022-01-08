@@ -41,14 +41,41 @@ body {
   background-color: #0e4758;
 }
 
-svg {
+.main {
+  min-width: 100%;
+  min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cable {
   width: 350px;
   height: 350px;
   position: absolute;
   z-index: -1;
-  top: 190px;
-  left: 423px;
+  top: 60px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
   -webkit-filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.2));
           filter: drop-shadow(5px 5px 1px rgba(0, 0, 0, 0.2));
+}
+
+@media only screen and (max-width: 1000px) {
+  .cable {
+    display: none;
+  }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 /*# sourceMappingURL=global.css.map */
