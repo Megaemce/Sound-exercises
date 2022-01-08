@@ -22,7 +22,7 @@
   position: relative;
 }
 
-.module.question::after {
+.module.question::before {
   content: '?';
   display: -webkit-box;
   display: -ms-flexbox;
@@ -34,17 +34,47 @@
       -ms-flex-pack: center;
           justify-content: center;
   position: absolute;
-  z-index: 1000;
+  z-index: 2;
   top: 35px;
   right: 0;
   bottom: 0;
   left: 0;
   cursor: pointer;
   font-size: 160px;
+  pointer-events: none;
   color: #0e4758;
 }
 
+.module.question.question-next::before {
+  -webkit-animation: slider 1.5s forwards;
+          animation: slider 1.5s forwards;
+}
+
+.module.question .head {
+  z-index: 3;
+  position: relative;
+}
+
+.module.question .head .reset,
+.module.question .head .config {
+  fill: #d1ac00;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.module.question .head .reset {
+  right: 10px;
+}
+
+.module.question .head .config {
+  left: 10px;
+}
+
 .module.question .content {
+  cursor: pointer;
   -webkit-filter: blur(5px);
           filter: blur(5px);
 }
@@ -53,7 +83,51 @@
   display: none;
 }
 
-.module .head {
+@-webkit-keyframes slider {
+  0% {
+    left: 0;
+  }
+  49% {
+    left: -500px;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  51% {
+    left: 500px;
+  }
+  51% {
+    opacity: 1;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes slider {
+  0% {
+    left: 0;
+  }
+  49% {
+    left: -500px;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  51% {
+    left: 500px;
+  }
+  51% {
+    opacity: 1;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+.head {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -72,7 +146,7 @@
   width: 100%;
 }
 
-.module .head .title-wrapper .title {
+.head .title-wrapper .title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -372,5 +446,61 @@
 
 .valueWrapper span:not(.value):not(.positive) {
   display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+  .module {
+    position: static !important;
+    margin: 10px 0;
+  }
+}
+
+#modules {
+  width: 1000px;
+  height: 570px;
+  position: relative;
+}
+
+@media only screen and (max-width: 1000px) {
+  #modules {
+    width: auto;
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 1001px) {
+  #input {
+    top: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+  }
+  #equalizerB {
+    top: 180px;
+    left: calc(50% + 130px);
+  }
+  #equalizerA {
+    top: 180px;
+    right: calc(50% + 130px);
+  }
+  #output {
+    top: 380px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+  }
 }
 /*# sourceMappingURL=module.css.map */

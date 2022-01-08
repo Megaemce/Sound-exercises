@@ -1,4 +1,3 @@
-
 $yellow: #d1ac00;
 $red: #4f000b;
 $white: #edf2f4;
@@ -10,23 +9,90 @@ sans-serif;
 $font-yellow: 'Yellowtail',
 cursive;
 
-.header {
+.config-panel {
+    font-size: 14px;
     display: flex;
     align-items: center;
-
+    flex-direction: column;
+    box-sizing: border-box;
     width: 100%;
     padding: 10px 20px;
 
-    position: fixed;
-    top: 0;
+    position: absolute;
+    z-index: 2;    top: -100%;
+height: 100%;
+    left: 0;
+    transition: top .4s ease-in-out;
+    .show-config &{
+        top: 40px;
+    }
+
+
+    &__values,
+    &__quantity {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .radio {
+        cursor: pointer;
+        display: inline-flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    input {
+        display: none;
+    }
+
+    .circle {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        position: relative;
+        margin-right: 10px;
+        // right: 125px;
+        border: 1px solid $yellow;
+        border-radius: 50%;
+    }
+
+    .circle:after {
+        content: "";
+        display: block;
+        width: 4px;
+        height: 4px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid $red;
+        border-radius: 50%;
+        background: $yellow;
+        opacity: 0;
+    }
+
+    .radio input:checked~.circle:after {
+        opacity: 1;
+    }
 
     color: $yellow;
 
     background-color: $red;
 
+    &__questions {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+    }
+
     &__choices {
         margin-right: 35px;
-        margin-left: 15px;
     }
 
     &__apply {
@@ -45,5 +111,54 @@ cursive;
 
             background-color: $yellow;
         }
+    }
+}
+
+
+.interface {
+    position: fixed;
+
+
+    svg {
+        width: 35px;
+        height: 35px;
+
+        cursor: pointer;
+
+        transition: .2s ease-in-out;
+
+        fill: $yellow;
+
+        &:hover {
+            fill: $red;
+        }
+    }
+
+    &--config {
+        svg {
+            transition: 0s ease-in-out;
+        }
+
+        &:hover svg {
+            transform: rotate(180deg);
+
+            transition: .5s ease-in-out;
+
+            fill: $yellow;
+        }
+
+        right: 20px;
+        top: 20px;
+    }
+}
+
+.logo {
+    position: fixed;
+    top: 0;
+    left: 20px;
+
+    img {
+        max-width: 200px;
+        max-height: 100px;
     }
 }
