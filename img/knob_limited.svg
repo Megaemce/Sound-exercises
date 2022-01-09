@@ -1,0 +1,229 @@
+<svg id="mainSVG" deg="0" version="1.1" viewBox="0 0 66.00001 59.40861" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<linearGradient id="knobstarygradient">
+			<stop stop-color="#2c2c2c" offset="0"/>
+			<stop stop-color="#f0f0f0" stop-opacity="0" offset="1"/>
+		</linearGradient>
+		<linearGradient id="linearGradient49659">
+			<stop stop-color="#fff" offset="0"/>
+			<stop stop-opacity="0" offset="1"/>
+		</linearGradient>
+		<filter id="filter1698-2" x="-.012" y="-.012" width="1.024" height="1.024" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation="0.17441999"/>
+		</filter>
+		<linearGradient id="linearGradient1861" x1="-6.5407" x2="1.5988" y1="10.029" y2="19.259" gradientUnits="userSpaceOnUse">
+			<stop offset="0"/>
+			<stop stop-opacity="0" offset="1"/>
+		</linearGradient>
+		<radialGradient id="radialGradient30837-0" cx="-24.353" cy="55.334" r="7.5" gradientTransform="matrix(.6636 .17365 -.16446 .62849 50.25034 -5.1444)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+			<stop stop-color="#d3d7cf" offset="0"/>
+			<stop stop-color="#d3d7cf" stop-opacity="0" offset="1"/>
+		</radialGradient>
+		<radialGradient id="radialGradient27294" cx="-61.484" cy="41.664" r="17.442" gradientTransform="matrix(.03950624 .9521744 -.6326558 .02724271 52.3343 67.1302)" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#fff" stop-opacity=".65761" offset="0"/>
+			<stop stop-color="#ada3a8" stop-opacity="0" offset="1"/>
+		</radialGradient>
+		<filter id="filter27504" x="-.182154" y="-.182154" width="1.364308" height="1.364308" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation="2.6476088"/>
+		</filter>
+		<radialGradient id="radialGradient5171-4" cx="-44.10178" cy="64.70106" r="17.442" gradientTransform="matrix(.26177 -.026011 .045558 .45848 -30.879 -4.0885)" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#374142" offset="0"/>
+			<stop stop-color="#283355" stop-opacity="0" offset="1"/>
+		</radialGradient>
+		<filter id="filter5475-6" x="-.05935502" y="-.05935502" width="1.11871" height="1.11871" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation="0.86272521"/>
+		</filter>
+		<radialGradient id="radialGradient5171" cx="-55.06482" cy="64.69919" r="17.442" gradientTransform="matrix(.26177 -.026011 .045558 .45848 -30.879 -4.0885)" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#222829" offset="0"/>
+			<stop stop-color="#283355" stop-opacity="0" offset="1"/>
+		</radialGradient>
+		<filter id="filter5475" x="-.0591408" y="-.0591408" width="1.118282" height="1.118282" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation="0.8596115"/>
+		</filter>
+		<radialGradient id="radialGradient4771" cx="-17.442" cy="55.64" r="17.442" gradientTransform="matrix(-.047997 .28035 -.48492 -.083022 54.28434 25.302)" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#fff" offset="0"/>
+			<stop stop-color="#423b3f" stop-opacity="0" offset="1"/>
+		</radialGradient>
+		<filter id="filter5029" x="-.1105858" y="-.1105858" width="1.221172" height="1.221172" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation="1.6073653"/>
+		</filter>
+		<radialGradient id="radialGradient13774" cx="-.9448" cy="50.561" r="17.442" gradientTransform="matrix(-2.2045,1.9348,-1.8633,-2.123,126.1683,149.1)" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#0e060b" offset="0"/>
+			<stop stop-color="#342c31" stop-opacity=".37013" offset="1"/>
+		</radialGradient>
+		<filter id="filter82512" x="-.5807482" y="-.1503986" width="2.161496" height="1.300797" color-interpolation-filters="sRGB">
+			<feFlood flood-color="rgb(0,0,0)" result="flood"/>
+			<feComposite in="flood" in2="SourceGraphic" operator="out" result="composite1"/>
+			<feGaussianBlur in="composite1" result="blur" stdDeviation="0.5"/>
+			<feOffset dx="2.77556e-17" dy="2.77556e-17" result="offset"/>
+			<feComposite in="offset" in2="SourceGraphic" operator="atop" result="composite2"/>
+		</filter>
+		<filter id="filter24914-6" x="-.09080393" y="-.09080393" width="1.181608" height="1.181608" color-interpolation-filters="sRGB">
+			<feGaussianBlur in="SourceGraphic" result="blur1" stdDeviation="0.58315496"/>
+			<feComposite in="blur1" in2="blur1" result="composite1"/>
+			<feComposite in="composite1" in2="composite1" k2="0.2613" operator="arithmetic" result="composite2"/>
+			<feColorMatrix in="composite2" result="colormatrix1" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 2.54688 0 "/>
+			<feGaussianBlur result="blur2" stdDeviation="0.01"/>
+			<feColorMatrix in="blur2" result="colormatrix2" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 5 -1 "/>
+			<feBlend in="colormatrix2" in2="colormatrix2" result="blend" stdDeviation="17"/>
+			<feComposite in="blend" in2="colormatrix2" operator="in" result="composite3"/>
+		</filter>
+		<radialGradient id="radialGradient46204-6-4-8-8" cx="87.206" cy="120.94" r="8.7209" gradientTransform="matrix(1.6674,-1.6793,5.9233,5.8814,-916.08,-473.61)" gradientUnits="userSpaceOnUse" xlink:href="#knobstarygradient"/>
+		<filter id="filter54004-2-0" x="-.024" y="-.024" width="1.048" height="1.048" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation="0.17442"/>
+		</filter>
+		<radialGradient id="radialGradient46204-6-4-7-8-4" cx="87.285" cy="118.9" r="8.7209" gradientTransform="matrix(1.6415,-1.5346,4.7046,5.0323,-769,-543.24)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient49659"/>
+		<filter id="filter54000-3-1" x="-.024" y="-.024" width="1.048" height="1.048" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation="0.17442"/>
+		</filter>
+		<radialGradient id="radialGradient46204-6-4-0-8-34" cx="87.206" cy="120.94" r="8.7209" gradientTransform="matrix(1.6674,-1.6793,5.9233,5.8814,-783.38,-631.29)" gradientUnits="userSpaceOnUse" xlink:href="#knobstarygradient"/>
+		<filter id="filter54008-4-5" x="-.024" y="-.024" width="1.048" height="1.048" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation="0.17442"/>
+		</filter>
+		<radialGradient id="radialGradient46204-6-4-7-4-6-7" cx="87.285" cy="118.9" r="8.7209" gradientTransform="matrix(1.6415,-1.5346,4.7046,5.0323,-636.3,-385.56)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient49659"/>
+		<filter id="filter54012-1-0" x="-.024" y="-.024" width="1.048" height="1.048" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation="0.17442"/>
+		</filter>
+		<radialGradient id="radialGradient50586-4" cx="-44.74245" cy="34.23242" r="9.429" gradientTransform="matrix(.02587035 .0005560647 -.0007336357 .02466442 26.18262 24.18056)" gradientUnits="userSpaceOnUse" spreadMethod="reflect">
+			<stop stop-color="#fff" stop-opacity=".06666667" offset="0"/>
+			<stop stop-color="#eeeeec" stop-opacity="0" offset="1"/>
+		</radialGradient>
+		<filter id="filter16198" x="-.1469256" y="-.07129021" width="1.293851" height="1.14258" color-interpolation-filters="sRGB">
+			<feMorphology in="SourceAlpha" radius="4.3" result="result91"/>
+			<feComposite in="SourceGraphic" in2="result91" operator="out"/>
+			<feGaussianBlur result="result0" stdDeviation="1.1935667"/>
+			<feDiffuseLighting>
+				<feDistantLight azimuth="225" elevation="66"/>
+			</feDiffuseLighting>
+			<feBlend in2="SourceGraphic" mode="multiply"/>
+			<feComposite in2="SourceAlpha" operator="in"/>
+		</filter>
+		<linearGradient id="linearGradient16610" x1="29.4334" x2="22.62111" y1="19.11662" y2="16.02332" gradientUnits="userSpaceOnUse" spreadMethod="reflect" xlink:href="#radialGradient13774"/>
+		<filter id="filter17704" x="-.07346281" y="-.03564511" width="1.146926" height="1.07129" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation="0.59678336"/>
+		</filter>
+		<filter id="filter8647" x="-.1539201" y="-.1478186" width="1.30784" height="1.295637" color-interpolation-filters="sRGB">
+			<feGaussianBlur stdDeviation="1.9240767"/>
+		</filter>
+		<radialGradient id="radialGradient12182" cx="-.9448" cy="50.561" r="17.442" gradientTransform="matrix(-2.2045,1.9348,-1.8633,-2.123,126.1683,149.1)" gradientUnits="userSpaceOnUse" xlink:href="#radialGradient13774"/>
+	</defs>
+	<g transform="translate(14,9.408608)">
+		<g id="lines" fill="#bebebe" fill-opacity=".5">
+			<rect x="24.5" width="1" height="6" opacity=".6"/>
+			<rect transform="rotate(-60)" x="-9.604541" y="9.178516" width="1" height="6" opacity=".6"/>
+			<rect transform="rotate(60)" x="33.60454" y="-34.12275" width="1" height="6" opacity=".6"/>
+		</g>
+	</g>
+	<g transform="translate(14,9.408608)">
+		<g id="background" transform="translate(0 .4142555)">
+			<circle id="leftLightBrush" cx="25" cy="25" r="17.442" fill="#423b3f" opacity=".97126"/>
+			<circle id="backgroundColor" transform="matrix(.8959103 -.09991851 .09686347 .924167 45.24509 -3.104459)" cx="-27.907" cy="24.244" r="17.442" fill="url(#radialGradient5171-4)" filter="url(#filter5475-6)" opacity=".97126" style="mix-blend-mode:color-dodge"/>
+			<circle id="bottomShadow" cx="25" cy="25" r="17.442" fill="url(#radialGradient12182)" opacity=".747365" style="mix-blend-mode:soft-light"/>
+			<circle id="topRightLight" cx="25" cy="21.898" r="17.442" fill="url(#radialGradient4771)" filter="url(#filter5029)" opacity=".97126"/>
+			<circle id="leftBlueGradient" transform="matrix(.796541 -.3227941 .2972283 .8650545 39.52423 -4.93076)" cx="-27.907" cy="24.244" r="17.442" fill="url(#radialGradient5171)" filter="url(#filter5475)" opacity=".97126"/>
+			<circle id="topLight" transform="matrix(1.0096 0 0 .9388 -1.014364 2.0535)" cx="25.767" cy="25.756" r="17.442" fill="url(#radialGradient27294)" filter="url(#filter27504)" opacity=".97126"/>
+			<circle id="pseudo3DSphere" cx="25" cy="25" r="17.442" fill="url(#radialGradient30837-0)" opacity=".786779" style="mix-blend-mode:multiply"/>
+		</g>
+	</g>
+	<g transform="translate(14,9.408608)">
+		<circle id="shadow" transform="matrix(-1.019964 0 0 -.9637309 22.39243 42.0469)" cx="-2.5436" cy="16.642" r="17.442" fill="url(#linearGradient1861)" filter="url(#filter1698-2)" opacity=".3046"/>
+	</g>
+	<g transform="translate(14,9.408608)" style="filter: drop-shadow(3px 3px 1.5px rgba(0, 0, 0, 0.4));">
+		<g>
+			<g id="knob_limited">
+				<g transform="matrix(1.00002 0 0 .9999993 -.0006884387 -.4666719)">
+					<path id="arrow" d="m23.99804 5.285035-1.376924 10.73829c-3.649673 0.917058-6.445579 3.852897-7.183447 7.542973-0.823686 4.170808 1.150555 8.394413 4.878806 10.43751l-1.318332 10.28126s0.0022 1.18164 1.002138 1.18164c0.999979 0 3.324173-0.523 4.999898-0.523s3.999917 0.523 4.999897 0.523 0.997821-1.181637 0.997821-1.181637l-1.318332-10.27931c2.528148-1.382754 4.314996-3.813175 4.880759-6.638676 1.012942-5.095654-2.148392-10.09032-7.187353-11.35548l-1.374972-10.72657z" fill="#2c262a"/>
+					<path id="arrowPseudo3D" transform="matrix(.9896154 0 0 1.000111 -7.657623 -1.002937)" d="m31.99787 6.285036-1.376924 10.73829c-3.649673 0.917058-6.445579 3.852897-7.183447 7.542973-0.823686 4.170808 1.150555 8.394413 4.878806 10.43751l-1.318332 10.28126s0.0022 1.18164 1.002138 1.18164c0.999979 0 3.324173-0.523001 4.999898-0.523001s3.999917 0.523001 4.999897 0.523001 0.997821-1.181637 0.997821-1.181637l-1.318332-10.27931c2.528148-1.382754 4.314996-3.813175 4.880759-6.638676 1.012942-5.095654-2.148392-10.09032-7.187353-11.35548l-1.374972-10.72657z" display="none" fill="#7f8478" filter="url(#filter16198)" opacity=".75" style="mix-blend-mode:overlay"/>
+					<path id="arrowGradient" d="m23.99804 5.285035-1.376924 10.73829c-3.649673 0.917058-6.445579 3.852897-7.183447 7.542973-0.823686 4.170808 1.150555 8.394413 4.878806 10.43751l-1.318332 10.28126s0.0022 1.18164 1.002138 1.18164c0.999979 0 3.324173-0.523 4.999898-0.523s3.999917 0.523 4.999897 0.523 0.997821-1.181637 0.997821-1.181637l-1.318332-10.27931c2.528148-1.382754 4.314996-3.813175 4.880759-6.638676 1.012942-5.095654-2.148392-10.09032-7.187353-11.35548l-1.374972-10.72657z" fill="url(#linearGradient16610)" filter="url(#filter17704)" opacity=".75" style="mix-blend-mode:difference"/>
+					<rect id="indicator" transform="matrix(.95939 .00020912 .0022132 1.1593 58.12347 7.398353)" x="-35.563" y="-1.8469" width="2.0663" height="7.9788" ry="0" fill="#fff" filter="url(#filter82512)" opacity=".9" style="paint-order:fill markers stroke"/>
+					<g transform="matrix(.7791327 0 0 .7791327 5.521333 6.055626)">
+						<g transform="matrix(1.0038 0 0 1.0038 -.094764 -.094118)" filter="url(#filter24914-6)" opacity=".75">
+							<circle transform="rotate(224.92)" cx="-35.355" r="9.1187" fill="#fff" stroke-width=".5228"/>
+							<path transform="matrix(.00076229 .5228 -.5228 .00076229 66.267 59.628)" d="m-48.909 78.837a17.442 17.442 0 0 1-17.442 17.442v-17.442z" fill="url(#radialGradient46204-6-4-8-8)" filter="url(#filter54004-2-0)" opacity=".9"/>
+							<path transform="matrix(.00076229 .5228 .5228 -.00076229 66.267 59.628)" d="m-48.909-78.837a17.442 17.442 0 0 1-17.442 17.442v-17.442z" fill="url(#radialGradient46204-6-4-7-8-4)" filter="url(#filter54000-3-1)" opacity=".9"/>
+							<path transform="matrix(-.00076229 -.5228 .5228 -.00076229 66.267 59.628)" d="m83.793-78.837a17.442 17.442 0 0 1-17.442 17.442v-17.442z" fill="url(#radialGradient46204-6-4-0-8-34)" filter="url(#filter54008-4-5)" opacity=".9"/>
+							<path transform="matrix(-.00076229 -.5228 -.5228 .00076229 66.267 59.628)" d="m83.793 78.837a17.442 17.442 0 0 1-17.442 17.442v-17.442z" fill="url(#radialGradient46204-6-4-7-4-6-7)" filter="url(#filter54012-1-0)" opacity=".9"/>
+						</g>
+						<circle cx="25" cy="25" r="9.5908" fill="url(#radialGradient50586-4)" style="mix-blend-mode:luminosity"/>
+						<circle cx="25" cy="25" r="9.5908" fill="none" opacity=".75" stroke="#2e2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width=".3"/>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+    	<text x="36.146484" y="5.8320312" fill="#d1ac00" font-family="sans-serif" font-size="8px" style="line-height:1.25" xml:space="preserve"><tspan id="textB" x="36.146484" y="5.8320312" fill="#d1ac00">B</tspan></text>
+	<text transform="scale(.9999157 1.000084)" x="60.853222" y="18.209541" fill="#d1ac00" font-family="sans-serif" font-size="8px" stroke-width=".999952" style="line-height:1.25" xml:space="preserve"><tspan id="textC" x="60.853222" y="18.209541" fill="#d1ac00" font-size="8px" stroke-width=".999952">C</tspan></text>
+	<text x="-0.0625" y="18.140755" fill="#d1ac00" font-family="sans-serif" font-size="8px" style="line-height:1.25" xml:space="preserve"><tspan id="textA" x="-0.0625" y="18.140755" fill="#d1ac00">ABC</tspan></text>
+
+	<g transform="translate(14,9.408608)">
+		<path id="PseudoObjectForCSSLight" transform="matrix(1 0 0 .9039196 .05161937 3.141829)" d="m18.27988 6.734137s-10.7175 3.762757-9.599679 11.50024l4.67015 19.7393c5.730884-9.77555 36.82718-30.6003 20.61841-30.92513z" fill="#fff" filter="url(#filter8647)" opacity=".155172" stroke-width="0" style="mix-blend-mode:lighten;paint-order:markers fill stroke"/>
+		<path id="cover" x="0" y="0" width="50" height="50" d="m0 0h50v50h-50z" fill-opacity="0" style="paint-order:markers fill stroke"/>
+	</g>
+	<script type="text/ecmascript"><![CDATA[
+        const svg = document.getElementById("mainSVG")
+        const cover = document.getElementById("cover");
+        const knob = document.getElementById("knob_limited");
+        
+        let knobAngle = 0;
+        let stepAngle = 60;
+
+
+
+        cover.onmousedown = function(event) {
+            const knobCenter = {
+                x: cover.getBoundingClientRect().left + cover.getBoundingClientRect().width / 2,
+                y: cover.getBoundingClientRect().top + cover.getBoundingClientRect().height / 2,
+            };
+
+            const radToDeg = (angle) => {
+                return (angle / Math.PI) * 180;
+            };
+
+            const degToRad = (angle) => {
+                return (angle / 180) * Math.PI;
+            }
+
+            const angleFromKnob = (event) => {
+                return Math.atan2(event.pageY - knobCenter.y, event.pageX - knobCenter.x);
+            };
+
+            const angleMod = (angle, mod) => {
+                return Math.floor(angle / mod)
+            }
+
+            const startAngle = knobAngle - angleFromKnob(event);
+
+            document.onmousemove = (event) => {
+                knobAngle = angleFromKnob(event) + startAngle;
+                let knobAngleDeg = radToDeg(knobAngle);
+                let deg = angleMod(knobAngleDeg, stepAngle) * stepAngle // one step is stepAngle*
+
+                deg %= 360;
+                if (deg < -60 && deg > -90) deg = -60
+                if (deg > 180 && deg <= 270) deg = -60;
+                if (deg < 180 && deg > 60) deg = 60;
+                if (deg === 180 || deg === -180) deg = 0;
+
+                svg.setAttribute("deg", deg); // set value in case something wants that from outside
+                knob.setAttribute("transform", `rotate(${deg} 25 25)`);
+            };
+
+            document.onmouseup = () => {
+                document.onmousemove = undefined;
+                document.onmouseup = undefined;
+            };
+
+            document.onmouseout = () => {
+                document.onmousemove = undefined;
+                document.onmouseup = undefined;
+            }
+
+            cover.ondblclick = () => {
+                knob.removeAttribute("transform");
+                knobAngle = 0;
+            };
+
+            event.preventDefault();
+        };
+    ]]></script>
+</svg>

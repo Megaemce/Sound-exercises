@@ -15,17 +15,35 @@ let equalizerANode;
 let equalizerBNode;
 let inputPrevState;
 
-const cableAOuput = document.getElementById("cable_A_to_output");
-const cableBOutput = document.getElementById("cable_B_to_output");
-const cableInputA = document.getElementById("cable_input_to_A");
-const cableInputB = document.getElementById("cable_input_to_B");
+const cables = document.getElementById("cables").contentWindow.document;
+const cableAOuput = cables.getElementById("cable_A_to_output");
+const cableBOutput = cables.getElementById("cable_B_to_output");
+const cableInputA = cables.getElementById("cable_input_to_A");
+const cableInputB = cables.getElementById("cable_input_to_B");
 const equalizerADiv = document.getElementById("equalizerA");
 const startButton = document.getElementById("start_button");
 const startScreen = document.getElementById("start_screen");
 
-function buildConnection() {
+const numOfChangesTextA = document.getElementById("knob_numberOfChanges").contentWindow.document.getElementById("textA");
+const numOfChangesTextB = document.getElementById("knob_numberOfChanges").contentWindow.document.getElementById("textB");
+const numOfChangesTextC = document.getElementById("knob_numberOfChanges").contentWindow.document.getElementById("textC");
+const volChangesTextA = document.getElementById("knob_volumeChanges").contentWindow.document.getElementById("textA");
+const volChangesTextB = document.getElementById("knob_volumeChanges").contentWindow.document.getElementById("textB");
+const volChangesTextC = document.getElementById("knob_volumeChanges").contentWindow.document.getElementById("textC");
+
+// change default ABC values above knobs
+numOfChangesTextA.innerHTML = "1 or 2";
+numOfChangesTextB.innerHTML = "1";
+numOfChangesTextC.innerHTML = "2";
+volChangesTextA.innerHTML = "MIX";
+volChangesTextB.innerHTML = "+8";
+volChangesTextB.setAttribute("x", "32");
+volChangesTextC.innerHTML = "-8";
+volChangesTextC.setAttribute("x", "59");
+
+function buildConnection(numberOfChangesDeg, volumeChangesDeg) {
 	outputNode = output();
-	equalizerANode = equalizer("equalizerA");
+	equalizerANode = equalizer("equalizerA", numberOfChangesDeg, volumeChangesDeg);
 	equalizerBNode = equalizer("equalizerB");
 
 	const outputLeft = outputNode.audioNode.leftNode;
@@ -117,20 +135,25 @@ startButton.onclick = () => {
 
 	// build everything when all the noise are loaded
 	audioContext.audioWorklet.addModule("js/effects/whiteNoise.js").then(() => {
-		audioContext.audioWorklet
-			.addModule("js/effects/pinkNoise.js")
-			.then(() => {
-				audioContext.audioWorklet
-					.addModule("js/effects/brownNoise.js")
-					.then(() => {
-						buildConnection();
-					});
+		audioContext.audioWorklet.addModule("js/effects/pinkNoise.js").then(() => {
+			audioContext.audioWorklet.addModule("js/effects/brownNoise.js").then(() => {
+				buildConnection(0, 0);
 			});
+		});
 	});
 
 	document.getElementById("apply-button").onclick = () => {
+		const numberOfChangesDeg = document
+			.getElementById("knob_numberOfChanges")
+			.contentWindow.document.getElementById("mainSVG")
+			.getAttribute("deg");
+		const volumeChangesDeg = document
+			.getElementById("knob_volumeChanges")
+			.contentWindow.document.getElementById("mainSVG")
+			.getAttribute("deg");
+
 		destroyConnection();
-		buildConnection();
+		buildConnection(numberOfChangesDeg, volumeChangesDeg);
 	};
 
 	document.onmousemove = undefined;
