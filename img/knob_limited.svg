@@ -167,8 +167,7 @@
         let knobAngle = 0;
         let stepAngle = 60;
 
-
-
+        // mouse handler
         cover.onmousedown = function(event) {
             const knobCenter = {
                 x: cover.getBoundingClientRect().left + cover.getBoundingClientRect().width / 2,
@@ -191,7 +190,7 @@
                 return Math.floor(angle / mod)
             }
 
-            const startAngle = knobAngle - angleFromKnob(event);
+            let startAngle = knobAngle - angleFromKnob(event);
 
             document.onmousemove = (event) => {
                 knobAngle = angleFromKnob(event) + startAngle;
@@ -208,15 +207,12 @@
                 knob.setAttribute("transform", `rotate(${deg} 25 25)`);
             };
 
+
             document.onmouseup = () => {
                 document.onmousemove = undefined;
                 document.onmouseup = undefined;
             };
 
-            document.onmouseout = () => {
-                document.onmousemove = undefined;
-                document.onmouseup = undefined;
-            }
 
             cover.ondblclick = () => {
                 knob.removeAttribute("transform");
@@ -225,5 +221,55 @@
 
             event.preventDefault();
         };
+
+        // touch handlers
+        cover.ontouchstart = function(event) {
+            const knobCenter = {
+                x: cover.getBoundingClientRect().left + cover.getBoundingClientRect().width / 2,
+                y: cover.getBoundingClientRect().top + cover.getBoundingClientRect().height / 2,
+            };
+
+            const radToDeg = (angle) => {
+                return (angle / Math.PI) * 180;
+            };
+
+            const degToRad = (angle) => {
+                return (angle / 180) * Math.PI;
+            }
+
+            const angleFromKnob = (event) => {
+                return Math.atan2(event.touches[0].pageY - knobCenter.y, event.touches[0].pageX - knobCenter.x);
+            };
+
+            const angleMod = (angle, mod) => {
+                return Math.floor(angle / mod)
+            }
+
+            let startAngle = knobAngle - angleFromKnob(event);
+
+            document.ontouchmove = (event) => {
+                knobAngle = angleFromKnob(event) + startAngle;
+                let knobAngleDeg = radToDeg(knobAngle);
+                let deg = angleMod(knobAngleDeg, stepAngle) * stepAngle // one step is stepAngle*
+
+                deg %= 360;
+                if (deg < -60 && deg > -90) deg = -60
+                if (deg > 180 && deg <= 270) deg = -60;
+                if (deg < 180 && deg > 60) deg = 60;
+                if (deg === 180 || deg === -180) deg = 0;
+
+                svg.setAttribute("deg", deg); // set value in case something wants that from outside
+                knob.setAttribute("transform", `rotate(${deg} 25 25)`);
+            };
+
+
+            document.ontouchend = () => {
+                document.ontouchmove = undefined;
+                document.ontouchend = undefined;
+            };
+
+            event.preventDefault();
+        };
+
     ]]></script>
 </svg>

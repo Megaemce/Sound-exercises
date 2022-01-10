@@ -64,7 +64,7 @@ export default function equalizer(name, numberOfChangesDeg, volumeChangesDeg) {
 		sliderValue.innerHTML = value;
 	};
 	// reset all sliders to default (0) position
-	module.resetEqualizer = () => {
+	module.restartEqualizer = () => {
 		frequencies.forEach((Hz) => {
 			const hzSlider = document.getElementById(`${name}-slider-${Hz}`);
 			hzSlider.value = 0;

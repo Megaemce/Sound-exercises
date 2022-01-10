@@ -23,7 +23,7 @@
 }
 
 .module.question::before {
-  content: '?';
+  content: "?";
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,29 +48,6 @@
 .module.question.question-next::before {
   -webkit-animation: slider 1.5s forwards;
           animation: slider 1.5s forwards;
-}
-
-.module.question .head {
-  z-index: 3;
-  position: relative;
-}
-
-.module.question .head .reset,
-.module.question .head .config {
-  fill: #d1ac00;
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  border-radius: 100%;
-}
-
-.module.question .head .reset {
-  right: 10px;
-}
-
-.module.question .head .config {
-  left: 10px;
 }
 
 .module.question .content {
@@ -202,7 +179,7 @@
           box-sizing: border-box;
   width: 100%;
   min-width: 100px;
-  font-size: .625em;
+  font-size: 0.625em;
   white-space: pre;
   border: none;
   outline: none;
@@ -219,10 +196,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -244,7 +217,7 @@
           align-items: center;
   position: relative;
   margin-left: 3px;
-  font-size: .625em;
+  font-size: 0.625em;
   text-transform: uppercase;
 }
 
@@ -253,9 +226,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .module .content .controllers .switch span {
@@ -272,10 +245,10 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  transition: background-image .1s;
-  -webkit-transition: background-image .1s;
-  -moz-transition: background-image .1s;
-  -o-transition: background-image .1s;
+  transition: background-image 0.1s;
+  -webkit-transition: background-image 0.1s;
+  -moz-transition: background-image 0.1s;
+  -o-transition: background-image 0.1s;
 }
 
 .module .content .controllers .switch button.switch-on {
@@ -337,7 +310,7 @@
   /* padding-bottom: .4em; */
   position: relative;
   margin-bottom: 1em;
-  font-size: .625em;
+  font-size: 0.625em;
 }
 
 .module .label {
@@ -479,6 +452,46 @@
         -ms-flex-pack: center;
             justify-content: center;
   }
+}
+
+button {
+  border: none;
+}
+
+button.restart {
+  background: url("../img/restart.svg") no-repeat;
+  background-size: contain;
+}
+
+button.config {
+  background: url("../img/config.svg") no-repeat;
+  background-size: contain;
+}
+
+#equalizerA .head {
+  z-index: 3;
+  position: relative;
+}
+
+#equalizerA .head .restart,
+#equalizerA .head .config {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+#equalizerA .head .restart {
+  right: 10px;
+}
+
+#equalizerA .head .config {
+  left: 10px;
+}
+
+#equalizerA.show-config .restart {
+  display: none;
 }
 
 @media only screen and (min-width: 1001px) {
