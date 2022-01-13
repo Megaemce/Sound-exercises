@@ -15,8 +15,82 @@
 		<link rel="stylesheet" href="css/header.css" />
 		<link rel="stylesheet" href="css/start-screen.css" />
 		<script type="module" src="js/main.js"></script>
+		<style>
+			.wrapper.right-bottom.github-fork-ribbon {
+				position: fixed;
+				top: inherit;
+				bottom: 0;
+				right: 0;
+			}
+			.wrapper.github-fork-ribbon {
+				width: 150px;
+				height: 150px;
+				position: absolute;
+				overflow: hidden;
+				top: 0;
+				z-index: 9999;
+				pointer-events: none;
+			}
+
+			.wrapper.right-bottom.github-fork-ribbon .ribbon.github-fork-ribbon {
+				top: 80px;
+				right: -43px;
+				transform: rotate(-45deg);
+			}
+
+			.ribbon.github-fork-ribbon {
+				background-image: linear-gradient(rgba(13, 13, 13, 0), rgba(13, 13, 13, 0.15));
+				box-shadow: rgb(13 13 13 / 50%) 0px 2px 3px 0px;
+			}
+
+			.ribbon.github-fork-ribbon {
+				position: absolute;
+				padding: 2px 0;
+				background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+				box-shadow: 0 2px 3px 0 rgb(0 0 0 / 50%);
+				font: 700 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
+				z-index: 9999;
+				pointer-events: auto;
+			}
+
+			[data-darkreader-inline-bgcolor] {
+				background-color: #28994c !important;
+			}
+
+			.ribbon.github-fork-ribbon a.github-fork-ribbon,
+			.ribbon.github-fork-ribbon a.github-fork-ribbon:hover {
+				color: rgb(229, 224, 216);
+				text-decoration-color: initial;
+				text-shadow: rgb(13 13 13 / 50%) 0px -1px;
+				border-color: rgba(58, 61, 61, 0.7);
+			}
+			.ribbon.github-fork-ribbon a.github-fork-ribbon,
+			.ribbon.github-fork-ribbon a.github-fork-ribbon:hover {
+				color: #fff;
+				text-decoration: none;
+				text-shadow: 0 -1px rgb(0 0 0 / 50%);
+				text-align: center;
+				width: 200px;
+				line-height: 20px;
+				display: inline-block;
+				padding: 2px 0;
+				border-width: 1px 0;
+				border-style: dotted;
+				border-color: #fff;
+				border-color: rgba(255, 255, 255, 0.7);
+			}
+		</style>
 	</head>
 	<body>
+		<div class="wrapper right-bottom style-scope github-fork-ribbon">
+			<div
+				class="ribbon style-scope github-fork-ribbon"
+				style="background-color: #28994c"
+				data-darkreader-inline-bgcolor=""
+			>
+				<a class="style-scope github-fork-ribbon" href="https://mobbler.js.org">Check also a mobbler</a>
+			</div>
+		</div>
 		<div id="start_screen" class="start-screen">
 			<h1 class="start-screen__heading">Ready to try your hearing?</h1>
 			<button id="start-button" class="start-screen__play">Play</button>
