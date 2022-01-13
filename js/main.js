@@ -31,7 +31,7 @@ function buildConnection(numberOfChangesDeg, volumeChangesDeg) {
 	inputNode = input(equalizerAInput, equalizerBInput);
 
 	outputOutput.connect(audioContext.destination);
-	outputOutput.gain.value = mainLevel ? mainLevel : 0;
+	outputOutput.gain.value = mainLevel ? mainLevel : 1;
 	equalizerAOutput.connect(outputLeft);
 	equalizerBOutput.connect(outputRight);
 
