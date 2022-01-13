@@ -209,6 +209,7 @@
                 else if ((deg <= -135 && deg >= -180) || ((deg <= 180 && deg >= 135))) deg = -60
                 else if (deg >= -45 && deg <= 45) deg = 60;
 
+                svg.setAttribute("deg", deg);
                 knob.setAttribute("transform", `rotate(${deg} 25 25)`);
             };
 
@@ -269,6 +270,7 @@
                 else if ((deg <= -135 && deg >= -180) || ((deg <= 180 && deg >= 135))) deg = -60
                 else if (deg >= -45 && deg <= 45) deg = 60;
 
+                svg.setAttribute("deg", deg);
                 knob.setAttribute("transform", `rotate(${deg} 25 25)`);
             };
 

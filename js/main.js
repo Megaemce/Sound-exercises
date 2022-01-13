@@ -8,8 +8,12 @@ let outputNode;
 let equalizerANode;
 let equalizerBNode;
 let inputPrevState;
+let mainLevel; // keeping gain level from output
 export let playing; // general bool to know if something is playing
 export let audioContext;
+export function changeMainLevel(value) {
+	mainLevel = value;
+}
 
 function buildConnection(numberOfChangesDeg, volumeChangesDeg) {
 	outputNode = output();
@@ -27,6 +31,7 @@ function buildConnection(numberOfChangesDeg, volumeChangesDeg) {
 	inputNode = input(equalizerAInput, equalizerBInput);
 
 	outputOutput.connect(audioContext.destination);
+	outputOutput.gain.value = mainLevel ? mainLevel : 0;
 	equalizerAOutput.connect(outputLeft);
 	equalizerBOutput.connect(outputRight);
 

@@ -1,4 +1,4 @@
-import { audioContext, activeAllCables } from "../main.js";
+import { audioContext, activeAllCables, changeMainLevel } from "../main.js";
 
 export default function output() {
 	const module = {};
@@ -37,6 +37,7 @@ export default function output() {
 
 	module.volume.oninput = function () {
 		module.audioNode.outputNode.gain.value = this.value;
+		changeMainLevel(this.value);
 	};
 
 	module.switch.onclick = () => {
