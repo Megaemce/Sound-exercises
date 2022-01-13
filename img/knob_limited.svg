@@ -193,17 +193,22 @@
             let startAngle = knobAngle - angleFromKnob(event);
 
             document.onmousemove = (event) => {
-                knobAngle = angleFromKnob(event) + startAngle;
+                knobAngle = angleFromKnob(event) // + startAngle;
                 let knobAngleDeg = radToDeg(knobAngle);
                 let deg = angleMod(knobAngleDeg, stepAngle) * stepAngle // one step is stepAngle*
 
-                deg %= 360;
-                if (deg < -60 && deg > -90) deg = -60
-                if (deg > 180 && deg <= 270) deg = -60;
-                if (deg < 180 && deg > 60) deg = 60;
-                if (deg === 180 || deg === -180) deg = 0;
+                // top part of circle: left -180, center -90, right 0
+                // bottom part: left 180, center 90, right 0
+                // however SVG transform operate differently: 
+                // top part of circle: left -90, center 0, right 90
+                // bottom part: left 270, center 180, right 90
+                // left point is: [-135, -180] and [180,135]
+                // middle point is: (-135,-45) and (135,45)
+                // right point is [-45,0] and [0,45]
+                if ((deg > -135 && deg < -45) || (deg < 135 && deg > 45)) deg = 0;
+                else if ((deg <= -135 && deg >= -180) || ((deg <= 180 && deg >= 135))) deg = -60
+                else if (deg >= -45 && deg <= 45) deg = 60;
 
-                svg.setAttribute("deg", deg); // set value in case something wants that from outside
                 knob.setAttribute("transform", `rotate(${deg} 25 25)`);
             };
 
@@ -248,17 +253,22 @@
             let startAngle = knobAngle - angleFromKnob(event);
 
             document.ontouchmove = (event) => {
-                knobAngle = angleFromKnob(event) + startAngle;
+                knobAngle = angleFromKnob(event) // + startAngle;
                 let knobAngleDeg = radToDeg(knobAngle);
                 let deg = angleMod(knobAngleDeg, stepAngle) * stepAngle // one step is stepAngle*
 
-                deg %= 360;
-                if (deg < -60 && deg > -90) deg = -60
-                if (deg > 180 && deg <= 270) deg = -60;
-                if (deg < 180 && deg > 60) deg = 60;
-                if (deg === 180 || deg === -180) deg = 0;
+                // top part of circle: left -180, center -90, right 0
+                // bottom part: left 180, center 90, right 0
+                // however SVG transform operate differently: 
+                // top part of circle: left -90, center 0, right 90
+                // bottom part: left 270, center 180, right 90
+                // left point is: [-135, -180] and [180,135]
+                // middle point is: (-135,-45) and (135,45)
+                // right point is [-45,0] and [0,45]
+                if ((deg > -135 && deg < -45) || (deg < 135 && deg > 45)) deg = 0;
+                else if ((deg <= -135 && deg >= -180) || ((deg <= 180 && deg >= 135))) deg = -60
+                else if (deg >= -45 && deg <= 45) deg = 60;
 
-                svg.setAttribute("deg", deg); // set value in case something wants that from outside
                 knob.setAttribute("transform", `rotate(${deg} 25 25)`);
             };
 
