@@ -178,24 +178,19 @@
                 return (angle / Math.PI) * 180;
             };
 
-            const degToRad = (angle) => {
-                return (angle / 180) * Math.PI;
-            }
-
             const angleFromKnob = (event) => {
                 return Math.atan2(event.pageY - knobCenter.y, event.pageX - knobCenter.x);
             };
 
             const angleMod = (angle, mod) => {
-                return Math.floor(angle / mod)
+                return Math.round(angle / mod)
             }
 
             let startAngle = knobAngle - angleFromKnob(event);
 
             document.onmousemove = (event) => {
                 knobAngle = angleFromKnob(event) // + startAngle;
-                let knobAngleDeg = radToDeg(knobAngle);
-                let deg = angleMod(knobAngleDeg, stepAngle) * stepAngle // one step is stepAngle*
+                let deg = radToDeg(knobAngle);
 
                 // top part of circle: left -180, center -90, right 0
                 // bottom part: left 180, center 90, right 0
@@ -205,9 +200,14 @@
                 // left point is: [-135, -180] and [180,135]
                 // middle point is: (-135,-45) and (135,45)
                 // right point is [-45,0] and [0,45]
-                if ((deg > -135 && deg < -45) || (deg < 135 && deg > 45)) deg = 0;
-                else if ((deg <= -135 && deg >= -180) || ((deg <= 180 && deg >= 135))) deg = -60
-                else if (deg >= -45 && deg <= 45) deg = 60;
+
+                if ((deg > -135 && deg < -45) || (deg < 135 && deg > 45)) {
+                    deg = 0;
+                } else if ((deg <= -135 && deg >= -180) || (deg <= 180 && deg >= 135)) {
+                    deg = -60
+                } else if (deg >= -45 && deg <= 45) {
+                    deg = 60;
+                }
 
                 svg.setAttribute("deg", deg);
                 knob.setAttribute("transform", `rotate(${deg} 25 25)`);
@@ -247,16 +247,11 @@
                 return Math.atan2(event.touches[0].pageY - knobCenter.y, event.touches[0].pageX - knobCenter.x);
             };
 
-            const angleMod = (angle, mod) => {
-                return Math.floor(angle / mod)
-            }
-
             let startAngle = knobAngle - angleFromKnob(event);
 
             document.ontouchmove = (event) => {
                 knobAngle = angleFromKnob(event) // + startAngle;
-                let knobAngleDeg = radToDeg(knobAngle);
-                let deg = angleMod(knobAngleDeg, stepAngle) * stepAngle // one step is stepAngle*
+                let deg = radToDeg(knobAngle);
 
                 // top part of circle: left -180, center -90, right 0
                 // bottom part: left 180, center 90, right 0
@@ -266,9 +261,14 @@
                 // left point is: [-135, -180] and [180,135]
                 // middle point is: (-135,-45) and (135,45)
                 // right point is [-45,0] and [0,45]
-                if ((deg > -135 && deg < -45) || (deg < 135 && deg > 45)) deg = 0;
-                else if ((deg <= -135 && deg >= -180) || ((deg <= 180 && deg >= 135))) deg = -60
-                else if (deg >= -45 && deg <= 45) deg = 60;
+
+                if ((deg > -135 && deg < -45) || (deg < 135 && deg > 45)) {
+                    deg = 0;
+                } else if ((deg <= -135 && deg >= -180) || (deg <= 180 && deg >= 135)) {
+                    deg = -60
+                } else if (deg >= -45 && deg <= 45) {
+                    deg = 60;
+                }
 
                 svg.setAttribute("deg", deg);
                 knob.setAttribute("transform", `rotate(${deg} 25 25)`);
